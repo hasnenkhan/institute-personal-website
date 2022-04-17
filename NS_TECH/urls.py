@@ -15,6 +15,9 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
+from django.views.static import serve
+from django.conf.urls import url
+from django.conf import settings
 from .views import homepage, certificatefind,subadmin, contact_us,subadminpermissions, adminlogin, adminpage, admission, adminedit,ourservices, certificatecourses, diplomacourses, languagecourses, changepassword
 
 urlpatterns = [
@@ -32,5 +35,7 @@ urlpatterns = [
     path('language-courses', languagecourses, name='languagecourses'),
     path('permissions', subadminpermissions, name='subadminpermissions'),
     path('subadmin', subadmin, name='subadmin'),
-    path('changepassword', changepassword, name='changepassword')
+    path('changepassword', changepassword, name='changepassword'),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]
