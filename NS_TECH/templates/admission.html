@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="referrer" content="origin">
+    <title>Admission Form</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <style>
+html, body {
+  min-height: 100%;
+  }
+body, div, form, input, select, p { 
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 22px;
+  }
+/* file input for image */
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Photo';
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 3px 27px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.reg-no{
+  color:rgb(5,57,97);
+}
+
+
+.name-of-institute{
+  color: rgb(0 , 112 , 192);
+    font-size: 13px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom : 5px;
+}
+
+#top{
+    text-align: right;
+}
+
+.thumb{
+  margin-right: 10px;
+  width: 130px;
+  height:130px;
+  border: 2px solid black;
+  float: right;
+}
+
+.photo{
+    width: 130px;
+    height:130px;
+    border: 2px solid black;
+}
+.topri{
+    float: right;
+    display: flex;
+    flex-direction:column;
+ }
+
+@media screen and (max-width:860px) {
+  .name-of-institute{
+    font-size: 10px;
+  }
+  .reg-no{
+    color:rgb(5,57,97);
+    padding-top: 29px;
+    padding-right: 10px;
+    font-family: serif;
+    font-size:small;
+    float: right;
+  }
+}
+      h1 {
+      margin: 0;
+      z-index: 2;
+      }
+      .srno{
+        color:red;
+      }
+      h2 {
+      font-weight: 200;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 100%;
+      padding:20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 20px 0 #095484; 
+      }
+
+      input, select {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      .triple-item input {
+        width:32.3%;
+      }
+      .triple-item select{
+        width:33%;
+        padding: 7px 0;
+        background: transparent;
+      }
+      @media (max-width: 1280px) {
+        .triple-item input {
+        width:26%;
+      }
+      .triple-item select{
+        width:26%;
+        padding: 7px 0;
+        background: transparent;
+      }
+      }
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder, a {
+      color: #095484;
+      }
+      .item input:hover, .item select:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #095484;
+      color: #095484;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      font-size: 20px;
+      color: #a9a9a9;
+      }
+      .item i {
+      right: 2%;
+      top: 30px;
+      z-index: 1;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+      right: 1%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      input[type=checkbox]  {
+      display: none;
+      }
+      label.check {
+      position: relative;
+      display: inline-block;
+      margin: 5px 20px 10px 0;
+      cursor: pointer;
+      }
+      .question span {
+      margin-left: 30px;
+      }
+      span.required {
+      margin-left: 0;
+      color: red;
+      }
+      label.check:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid #095484;
+      }
+      input[type=checkbox]:checked + .check:before {
+      background: #095484;
+      }
+      label.check:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      width: 8px;
+      height: 4px;
+      border: 3px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=checkbox]:checked + label:after {
+      opacity: 1;
+      }
+      .btn-block {
+      margin-top: 0px;
+      text-align: center;
+      }
+      button {
+      width: 120px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #0666a3;
+      }
+      @media (min-width: 360px) {
+      .name-item input, .city-item input {
+      width: calc(50% - 20px);
+      }
+      .thumb-item input {
+        width:48.5%;
+      }
+      .name-item, .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      
+      }
+      .city-item select {
+      width: calc(50% - 8px);
+      }
+     }
+     /*
+     .signdiv{
+       margin-top: 5%;
+     }
+      .sign{
+        text-align: center;
+      }
+      .signname{
+        text-align: center;
+      }
+      .nameedit{
+        margin-left: 0%;
+      } */
+      .signs{
+        margin-top: 9%;
+        margin-bottom: 4%;
+      }
+      .line2 {
+        margin:5px 0;
+        height:2px;
+        background:
+        repeating-linear-gradient(to right,red 0,red 10px,transparent 10px,transparent 12px)
+        /*10px red then 2px transparent -> repeat this!*/
+      }
+      .signnames{
+        font-weight: 800;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+      <form action="https://formsubmit.co/nstechorai@gmail.com" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_template" value="table">
+        <div id= "top">
+          <div class="topri">
+          <div class="photo">
+            <h6 style="margin: 10%;">
+              <input type="file" class="custom-file-input"  name="attachment" accept="image/png, image/jpeg">
+            </h6>
+            </div>
+          </div>     
+          <div class= "name-of-institute">
+            <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
+            <span class="reg-no">Reg No JAL/06757 UP-37-0000622 </span>
+          <h2>(Admission Form)</h2>
+          </div>
+        </div>
+        <h2 class="srno">Sr. No. ______ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reg. Fees: <u>200&nbsp;&nbsp;&nbsp;</u>
+        </h2>
+        <div class="item">
+          <div class="name-item">
+            <input type="text" name="Name" placeholder="Full Name" required/>
+            <input type="text" name="Father Name" placeholder="Father Name" required/>
+          </div>
+        </div>
+        <div class="item">
+          <div class="name-item">
+          <input type="text" name="Mother Name" placeholder="Mother Name" required/>
+          <input type="text" name="Father's Occupation" placeholder="Father's Occupation" required/>
+        </div>
+      </div>
+        <div class="item">
+          <div class="city-item">
+            <select id = "maritalstatus" name="Married Status" onclick="married();" required>
+              <option value="">Marital Status</option>
+              <option value="Married">Married</option>
+              <option value="Unmarried">Unmarried</option>
+            </select>
+            <div class="question">
+                  Gender&nbsp;&nbsp;&nbsp;:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" value="Yes" id="male" class="gender" name="Male"/>
+                  <label for="male" class="check"><span>Male</span></label>
+                  <input type="checkbox" value="Yes" id="Female" class="gender" name="Female"/>
+                  <label for="Female" class="check"><span>Female</span></label>
+                </div>
+          </div>
+      </div>
+        <div class="item">
+          <div class="name-item">
+            <input type="text" id="husbandname" name="Husband Name" placeholder="Husband Name"/>
+            <input type="text" id="occupation" name="Husband Occupation" placeholder="Husband Occupation"/>
+          </div>
+        </div>
+          <div class="item">
+            <p>Date of Birth</p>
+            <input type="date" name="Date of Birth" required/>
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="item">
+            <div class="city-item">
+              <select name="Religion" required>
+                <option value="">Religion</option>
+                <option value="Muslim">Muslim</option>
+                <option value="Christian">Christian</option>
+                <option value="Sikh">Sikh</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Other">Other</option>
+              </select>
+              <select name="Category" required>
+                <option value="">Category</option>
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+              </select>
+            </div>
+          </div>
+        <div class="item">
+          <div class="name-item">
+          <input type="text" name="Street address" placeholder="Street address" />
+          <input type="text" name="Postal/Zip code" placeholder="Postal / Zip code" required/>
+          </div>
+        </div>
+        <h2>Qualification & Identification Details</h2>
+        <div class="triple-item">
+          <select class="Class 10th Passing Year" required>
+            <option value="">Class 10th Passing Year</option>
+            <option value="1980">1980</option>
+            <option value="1981">1981</option>
+            <option value="1982">1982</option>
+            <option value="1983">1983</option>
+            <option value="1984">1984</option>
+            <option value="1985">1985</option>
+            <option value="1986">1986</option>
+            <option value="1987">1987</option>
+            <option value="1988">1988</option>
+            <option value="1989">1989</option>
+            <option value="1990">1990</option>
+            <option value="1991">1991</option>
+            <option value="1992">1992</option>
+            <option value="1993">1993</option>
+            <option value="1994">1994</option>
+            <option value="1995">1995</option>
+            <option value="1996">1996</option>
+            <option value="1997">1997</option>
+            <option value="1998">1998</option>
+            <option value="1999">1999</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select>
+          <input type="text" name="Highest Qualification" placeholder="Highest Qualificaton" required/>
+          <select name="Year of Highest Qualification" required>
+            <option value="">Year</option>
+            <option value="1980">1980</option>
+            <option value="1981">1981</option>
+            <option value="1982">1982</option>
+            <option value="1983">1983</option>
+            <option value="1984">1984</option>
+            <option value="1985">1985</option>
+            <option value="1986">1986</option>
+            <option value="1987">1987</option>
+            <option value="1988">1988</option>
+            <option value="1989">1989</option>
+            <option value="1990">1990</option>
+            <option value="1991">1991</option>
+            <option value="1992">1992</option>
+            <option value="1993">1993</option>
+            <option value="1994">1994</option>
+            <option value="1995">1995</option>
+            <option value="1996">1996</option>
+            <option value="1997">1997</option>
+            <option value="1998">1998</option>
+            <option value="1999">1999</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+            <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
+            <option value="2007">2007</option>
+            <option value="2008">2008</option>
+            <option value="2009">2009</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+          </select>
+        </div>
+        <div class="city-item">
+          <input type="text" name="Adhaar Number" placeholder="Adhaar Number" required>
+          <input type="text" name="Name of Course" placeholder="Name of Course" required/>
+        </div>
+        <div class="thumb-item">
+          <input type="text" name="Batch Timing" placeholder="Batch Timing"/>
+          <div class="thumb"><h6 style="margin: 25%;">Left Thumb Impression</h6></div>
+        </div>
+        <div class="question">
+              <input type="checkbox" value="Agreed" id="check_1" name="Agreed Or Not" required/>
+              <label for="check_1" class="check"><span>"I hereby agree that 
+                all particulars in the admission form <br>are true to the best
+                of my knowledge and belief"</span></label>
+        </div>
+   
+<!--
+        <div class="signdiv">
+          <div class="sign">
+            <span>______________________&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              _________________________
+              &nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              ________________________</span>
+          </div>
+          <div class="signname">
+            <span class="nameedit">Signature of Student
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Manager
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Signature of Parents/Guardian</span>
+          </div>
+        </div>-->
+       <div class="signs">
+        <div class="signnames">
+          <span>
+            Student Sign
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp; 
+            Office Use
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;
+            Parents/Guardian Sign</span>
+        </div>
+       </div>
+        
+        <div class="btn-block">
+          <button type="submit" name="submit">Submit</button>
+          <button type="submit" onclick="window.print()">Print</button>
+        </div>
+      </form>
+      </div>
+    <script>
+      function married() {
+        var x = document.getElementById('maritalstatus').value;
+        if (x == "Unmarried"){
+          document.getElementById("husbandname").disabled = true;
+          document.getElementById("occupation").disabled = true;
+        }
+        else {
+          document.getElementById("husbandname").disabled = false;
+          document.getElementById("occupation").disabled = false;
+        }
+      }
+    </script>
+  </body>
+</html>

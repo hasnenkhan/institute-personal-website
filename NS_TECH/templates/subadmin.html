@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'adddelforms.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'adminpagetable.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'adddelbuttons.css' %}"/>
+    <link rel="stylesheet" href="{% static 'adminpagetoplogo.css' %}"/>
+    <script type="text/javascript" src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <title>Admin</title>
+</head>
+<body>
+
+  <!--topbanner-->
+
+  <div id= "top">
+    <div class = "top-right"> 
+    <img src="{% static 'images/ns_tech_logo.png' %}" alt="Ns_Tech Logo" class = "logo-photo">
+    <div class= "logo-down">
+      <span class = "estd">Estd. 2016</span>
+    </div>
+    </div>
+    <span class = "reg-no">Reg No <br>JAL/06757 <BR>UP-37-0000622</BR>
+    <form action="{% url 'subadmin' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" class="logout" name="logout" value="Log Out"></form><br></span>
+    <div class= "name-of-institute">
+    <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
+    <h2 class= "h4-logo">An Institute for Learning Advanced Technology</h2>
+    </div>
+  </div>
+
+  <!--studentdatatable and buttons-->
+
+  <div class="limiter">
+    <div class="container-table100">
+      <!--buttons for add , delete etc-->
+      <div class="but">
+      <div class="filebuttonsdiv">
+        <img src="{% static 'images/ns_tech_logo.png' %}" alt="logo" class ='logosmall'>
+        <div>
+          <div>
+            {% if add %}
+            <button class="glow-on-hover" type="button" onclick="openForm()">
+            <img src="{% static 'images/buttons/add-user.png' %}" alt="add" class="buttons">
+            </button>
+            {% endif %}
+            {% if edit %}
+            <button class="glow-on-hover" type="button"><a href="{% url 'adminedit' %}">
+            <img src="{% static 'images/buttons/edit.png' %}" alt="edit" class="buttons"></a>
+            </button>
+            {% endif %}
+            {% if search %}
+            <button class="glow-on-hover" type="button" onclick="openForm4()">
+            <img src="{% static 'images/buttons/search.png' %}" alt="search" class="buttons">
+            </button>
+            {% endif %}
+            {% if subadmin %}
+            <button class="glow-on-hover" type="button" onclick="openForm5()">
+            <img src="{% static 'images/buttons/admin.png' %}" alt="subadmin" class="buttons">
+            </button>
+            {% endif %} 
+          </div>
+          <div>
+            {% if delete %}
+            <button class="glow-on-hover" type="button" onclick="openForm2()">
+            <img src="{% static 'images/buttons/delete.png' %}" alt="delete" class="buttons">
+            </button>
+            {% endif %}
+            {% if download %}
+            <button class="glow-on-hover" type="button" onclick="exprt('xlsx','studentsdata')">
+            <img src="{% static 'images/buttons/download.png' %}" alt="download" class="buttons">
+            </button>
+            {% endif %}
+            {% if setting %}
+            <button class="glow-on-hover" type="button">
+            <img src="{% static 'images/buttons/settings.png' %}" alt="setting" class="buttons">
+            </button>
+            {% endif %}
+            {% if deldatabase %}
+            <button class="glow-on-hover" type="button" onclick="openForm3()">
+            <img src="{% static 'images/buttons/delete-database.png' %}" alt="del-database" class="buttons">
+            </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if xlsxfile %}
+      <div class="filebuttonsdiv">
+        <form action="{% url 'adminpage' %}" 
+        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+         method="POST" style="margin:18%;" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" name="thefile" required>
+          <button class="button" type="submit" name="thefile">Upload</button>
+        </form>
+      </div>
+      {% endif %}
+      </div>
+      <div class="wrap-table100">
+        <div class="table100">
+          <!--table of students-->
+          <table id="tblexprt">
+            <thead>
+              <tr class="table100-head">
+                <th class="column1">Certificate Number</th>
+                <th class="column2">Name</th>
+                <th class="column3">Father Name</th>
+                <th class="column4">Course</th>
+                <th class="column5">Months</th>
+                <th class="column6">Type</th>
+                <th class="column7">From</th>
+                <th class="column8">To</th>
+                <th class="column9">Issued Date</th>
+                <th class="column10">Grade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for students in context %}
+                <tr>
+                  <td class="column1">{{ students.CertificateNumber }}</td>
+                  <td class="column2">{{ students.Name }}</td>
+                  <td class="column3">{{ students.FatherName }}</td>
+                  <td class="column4">{{ students.Course }}</td>
+                  <td class="column5">{{ students.Months }}</td>
+                  <td class="column6">{{ students.CertificateType }}</td>
+                  <td class="column7">{{ students.From }}</td>
+                  <td class="column8">{{ students.To }}</td>
+                  <td class="column9">{{ students.IssuedDate }}</td>
+                  <td class="column10">{{ students.Grade }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+
+    <!--add student form-->
+
+    <div class="form-popup-A" id="myForm">
+      <form action="{% url 'adminpage' %}" class="form-container-A" method="POST">
+        {% csrf_token %}
+        <h2 style="margin-left: 20px;">Add</h2>
+        <input type="text" placeholder="Enter Certificate Number" name="certificate" autocomplete="off"required>
+        <input type="text" placeholder="Enter NAME" name="name" autocomplete="off" required>
+        <input type="text" placeholder="Enter Father NAME" name="fathername" autocomplete="off" required>
+        <input type="text" placeholder="Enter Course Name" name="course" autocomplete="off" required>
+        <input type="text" placeholder="Enter Months" name="months" autocomplete="off" required>
+        <input type="text" placeholder="Enter Type" name="type" autocomplete="off" required>
+        <input type="text" placeholder="Enter Grade" name="grade" autocomplete="off" required>
+        <label for="issue"><h5 style="margin-left: 20px;">Issued Date:</h5></label>
+        <input type="date" placeholder="Conducted From" name="issued">
+        <label for="from"><h5 style="margin-left: 20px;">Conducted From:</h5></label>
+        <input type="date" placeholder="Conducted From" name="from">
+        <label for="too"><h5 style="margin-left: 20px;">Conducted to:</h5></label>
+        <input type="date" placeholder="Conducted to" name="too">
+        <button type="submit" class="btn" name="adding">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+
+    <!--delete one student-->
+
+    <div class="form-popup" id="myForm2">
+      <form action="{% url 'adminpage' %}" class="form-container" method="POST">
+        {% csrf_token %}
+        <h2>Delete</h2>
+        <input type="text" placeholder="Enter Certificate Number" name="certificate2" autocomplete="off" required>
+        <button type="submit" class="btn" name="deleting">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm2()">Close</button>
+      </form>
+    </div>
+
+    <!--delete all student-->
+
+    <div class="form-popup" id="myForm3">
+      <form action="{% url 'adminpage' %}" class="form-container" method="POST">
+        {% csrf_token %}
+        <h2 style="text-align: center;">Are You Sure</h2>
+        <button type="submit" class="btn" name="deleteall">Yes</button>
+        <button type="button" class="btn cancel" onclick="closeForm3()">No</button>
+      </form>
+    </div>
+
+    <!--search the data of students-->
+
+    <div class="form-popup" id="myForm4">
+      <form action="{% url 'adminpage' %}" class="form-container" method="POST">
+        {% csrf_token %}
+        <h2 style="text-align: center;">Search</h2>
+        <input type="text" placeholder="Enter Certificate Number" name="search"  autocomplete="off" required>
+        <button type="submit" class="btn" name="searches">Search</button>
+        <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
+      </form>
+    </div>
+
+     <!--subadmin permission-->
+
+     <div class="form-popup" id="myForm5">
+      <form action="{% url 'subadminpermissions' %}" class="form-container" method="POST">
+        {% csrf_token %}
+        <h2 style="text-align: center;">Permissions Of Subadmin</h2>
+        <input type="checkbox" name="add" id="add" value="1">
+        <label for="add">Add Student</label><br>
+        <input type="checkbox" name="edit" id="edit" value="1">
+        <label for="edit">Edit Student</label><br>
+        <input type="checkbox" name="search" id="search" value="1">
+        <label for="search">Search Student</label><br>
+        <input type="checkbox" name="delete" id="del" value="1">
+        <label for="del">Delete Student</label><br>
+        <input type="checkbox" name="download" id="download" value="1">
+        <label for="download">Download Data of Student</label><br>
+        <input type="checkbox" name="deldatabase" id="deldatabase" value="1">
+        <label for="deldatabase">Delete Database</label><br>
+        <input type="checkbox" name="passwordchange" id="passwordchange" value="1">
+        <label for="passwordchange">Password Change</label><br><br>
+        <button type="submit" class="btn" name="edit">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>
+      </form>
+    </div>
+
+    <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+          document.getElementById("myForm2").style.display = "none";
+          document.getElementById("myForm3").style.display = "none";
+          document.getElementById("myForm4").style.display = "none";
+
+        }
+        
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+        }
+
+        function openForm2() {
+          document.getElementById("myForm2").style.display = "block";
+          document.getElementById("myForm1").style.display = "none";
+          document.getElementById("myForm3").style.display = "none";
+          document.getElementById("myForm4").style.display = "none";
+        }
+
+        function closeForm2() {
+          document.getElementById("myForm2").style.display = "none";
+        }
+
+        function openForm3() {
+          document.getElementById("myForm3").style.display = "block";
+          document.getElementById("myForm2").style.display = "none";
+          document.getElementById("myForm1").style.display = "none";
+          document.getElementById("myForm4").style.display = "none";
+        }
+
+        function closeForm3() {
+          document.getElementById("myForm3").style.display = "none";
+        }
+
+        function openForm4() {
+          document.getElementById("myForm4").style.display = "block";
+          document.getElementById("myForm1").style.display = "none";
+          document.getElementById("myForm3").style.display = "none";
+          document.getElementById("myForm2").style.display = "none";
+        }
+
+        function closeForm4() {
+          document.getElementById("myForm4").style.display = "none";
+        }
+
+        function openForm5() {
+          document.getElementById("myForm5").style.display = "block";
+          document.getElementById("myForm1").style.display = "none";
+          document.getElementById("myForm3").style.display = "none";
+          document.getElementById("myForm2").style.display = "none";
+        }
+
+        function closeForm5() {
+          document.getElementById("myForm5").style.display = "none";
+        }
+
+        // exporting sheet
+        
+        function exprt(fileExtension,fileName) {
+          var elt=document.getElementById("tblexprt");
+          var wb = XLSX.utils.table_to_book(elt,{sheet:"sheet1", raw:true});
+          return XLSX.writeFile(wb,fileName+"."+fileExtension || ('MySheetName.'+ (fileExtension || 'xlsx')));
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+          document.querySelector(".dropbtn").style.transform = "rotate(180deg)";
+        }}}}
+
+        if ( window.history.replaceState ) {
+          window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+        
+</body>
+</html>

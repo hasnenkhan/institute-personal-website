@@ -1,0 +1,568 @@
+.top-right{
+  float: left;
+  padding-left: 30px;
+  padding-top: 0px;
+}
+
+.logo-down{
+  color: rgb(5, 57, 97);
+  margin-top: 19px;
+  margin-right: 45px;
+  font-size:large;
+  font-weight: bolder;
+} 
+
+.reg-no{
+  color:rgb(5,57,97);
+  padding-top: 135px;
+  padding-right: 25px;
+  font-family: serif;
+  font-size:large;
+  font-weight:bold;
+  float: right;
+}
+
+.logo-photo{
+    margin-top:0px;
+    display: block;
+    height: 155px;
+    width: 155px;
+
+}
+
+.name-of-institute{
+    color: rgb(0 , 112 , 192);
+    font-size: 26px;
+    text-align: center;
+    padding-top: 1px;
+    padding-bottom : 1px;
+    text-shadow: 2px 2px rgba(101, 22, 226, 0.363);
+}
+
+#top{
+  background-color: #ade281;
+    text-align: right;
+}
+
+body{
+    background-color: rgb(228, 222, 222);
+}
+
+.h4-logo{
+   
+    color: rgb(0,32,96);
+    position: relative;
+    text-shadow: none;
+    bottom:3mm;
+    right :2mm;
+}
+#bottom{
+    background-color: tomato;
+}
+
+.search-txt{
+    font-size: 11mm;
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  padding-top: 30px;
+  max-width: 1200px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 46%;
+  width: auto;
+  margin-top: -22px;
+  padding: 20px;
+  font-weight: bolder;
+  font-size: 35px;
+  transition: 0.6s ease;
+  border-radius: 10px 10px 10px 10px;
+  user-select: none;
+  color: rgb(255, 255, 255);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgb(9, 68, 179);
+}
+
+/* Caption text */
+
+.text-1{
+  text-align: center;
+  font-size: 22px;
+  width: 100%;
+  font-weight: bolder;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.text-2{
+  color: #000000;
+  font-size: 22px;
+  width: 100%;
+  text-align: center;
+  font-weight: bolder;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: rgb(9, 68, 179);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #d19292;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.slide-img-1{
+  border-radius: 7px;
+  float: left;
+}
+.slide-img-2{
+  border-radius: 7px;
+  float: right;
+}
+
+/* entry form popup*/
+.form-popup {
+  width: 35%;
+  display: none;
+  position: fixed;
+  left: 30%;
+  top: 35px;
+  border: 3px solid #f1f1f1;
+  border-radius: 7px;
+  z-index: 9;
+}
+
+.cross{
+  float: right;
+  cursor: pointer;
+}
+
+/* Add styles to the form container */
+.form-container {
+  padding-left: 0px;
+  padding-right: 10px;
+  padding-top: 10px;
+  background-color: rgb(224, 195, 195);
+}
+
+.form-container input[type=text] {
+  width: 90%;
+  padding: 15px;
+  border: none;
+  font-size: 16px;
+  margin: 0px 0px 20px 22px;
+  background: #ffffff;
+}
+
+.form-container textarea {
+  font-size: 18px;
+  margin-left: 4.5%;
+  width: 90%;
+  height: 140px;
+  border:none;
+  outline: none;
+}
+
+@media screen and (max-width:770px){
+  .form-popup{
+    width: 60%;
+    left:19%;
+    top:0px;
+  }
+}
+
+@media screen and (max-width:620px){
+  .form-popup{
+    width: 100%;
+    left:0%;
+  }
+}
+
+@media screen and (max-width:360px){
+  .form-container input[type=text] {
+    margin: 0px 0px 20px 12px;
+  }
+  .prev, .next {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .slideshow-container {
+    padding-top: 20px;
+  }
+  .reg-no{
+    font-size:8px;
+  }
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 10px;
+  margin-left: 25%;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  margin-top:10px;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+.form-container .btn:hover{
+  background-color: #106648;
+}
+
+ /*footer part*/
+
+.footer-logos{
+    width: 25px;
+    height: 25px;
+}
+
+.footer-left{
+    float: left;
+    padding-left: 40px;
+    padding-top: 13px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+.footer-right{
+    float: right;
+    padding-right: 220px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+}
+
+.last{
+    background-image: url("--images/footer-wallpaper.jpg");
+    overflow: hidden;
+}
+
+.list-of-courses-I{
+    text-align: left;
+
+}
+
+.list-of-courses-II{
+    text-align: justify;
+}
+
+.ul{
+    list-style: circle;
+    font-size: 25px;
+}
+
+.lists{
+    background-color: teal;
+}
+
+/* popular courses*/
+
+.popular-header{
+  font-size:40px;
+  text-align: center;
+  margin-top: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 500;
+}
+.popular-courses{
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0px 0px 20px;
+  background-color: rgb(238, 242, 245);
+  box-sizing: border-box;
+  margin: 20px auto; 
+}
+
+.img-of-popular-courses{
+  width: 100%;
+  height: 250px;
+}
+.img-of-popular-courses2{
+  width: 100%;
+  height: 250px;
+}
+.img-of-popular-courses3{
+  width: 100%;
+  height: 250px;
+}
+
+.points-pop-courses{
+  font-size: 12px;
+}
+
+.popular-courses ul{
+  background-color: transparent;
+  padding-left: 10px;
+  margin:0px;
+}
+
+.popular-courses ul li{
+  list-style: none;
+  position:relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s;
+  float:left;
+  width: 25%;
+  height: 250px;
+  background: rgb(16, 100, 93);
+  margin: 0px 0px 30px 65px;
+}
+.popular-courses ul li:hover{
+    transform: rotateY(180deg);
+}
+
+.popular-front{
+  position:absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.popular-back{
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 100;
+  margin-top: 30px;
+  color:white;
+}
+
+/* teacher section*/
+
+.teachers-section ul{
+  background-color: transparent;
+  padding-left: 10px;
+}
+.teachers-section ul li{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  position:relative;
+  float:left;
+  width: 42%;
+  height: 250px;
+  background: rgb(224, 231, 231);
+  margin: 0px 0px 30px 60px;
+}
+
+.teachers-header{
+  font-size:45px;
+  text-align: center;
+  margin-top: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 500;
+}
+
+.teachers-section{
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0px 0px 20px;
+  background-color: rgb(238, 242, 245);
+  box-sizing: border-box;
+  margin: 20px auto; 
+}
+
+.img-of-teachers{
+  border: 2px solid black;
+  margin-left:0%;
+  width:100%;
+  height: 250px;
+}
+
+.adminlinkdiv{
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.adminlink{
+  text-decoration: none;
+  padding-bottom: 20px;
+}
+
+.adminlink:hover {
+  text-decoration:underline;
+}
+
+@media screen and (max-width:1250px) {
+  .popular-courses ul li{
+    width: 40%;
+    margin-left: 28px;
+  }
+  .teachers-section ul li{
+    width: 40%;
+    margin-left: 28px;
+  }
+}
+
+@media screen and (max-width:860px) {
+  .name-of-institute{
+    font-size: 19px;
+  }
+  .logo-photo{
+    width: 86%;
+    height: 130px;
+  }.h4-logo{
+    font-size: 22px;
+    bottom: 1mm;
+  }
+  .logo-down{
+    margin-top: 10px;
+  }
+  .reg-no{
+    color:rgb(5,57,97);
+    padding-top: 80px;
+    padding-right: 25px;
+    font-family: serif;
+    font-size:large;
+    float: right;
+  }
+}
+@media screen and (max-width:750px) {
+  .popular-header{
+    font-size:45px;
+    font-weight: 400;
+  }
+  .popular-courses{
+    width: 90%;
+    padding: 0px;
+  }
+  .popular-courses ul li{
+    float: none;
+    width:90%;
+    margin: 40px auto;
+  }
+  .footer-right{
+    float: right;
+    padding-right: 0px;
+    font-size: 12px;
+  }
+  .img-of-popular-courses{
+    width: 120%;
+  }
+  .img-of-popular-courses2{
+    width: 140%;
+  }
+  .img-of-popular-courses3{
+    width: 130%;
+  }
+  .teachers-section{
+    width: 100%;
+    padding: 0px;
+  }
+  .teachers-section ul li{
+    float: none;
+    width:90%;
+    margin: 40px auto;
+  }
+}
+
+
+@media screen and (max-width:620px){
+  .img-of-popular-courses{
+    width: 100%;
+  }
+  .img-of-popular-courses2{
+    width: 107%;
+  }
+  .img-of-popular-courses3{
+    width: 100%;
+  }
+  .reg-no{
+    color:rgb(5,57,97);
+    padding-top: 4px;
+    padding-right: 4px;
+    font-family: serif;
+    font-size:8px;
+    float: right;
+  }
+  .name-of-institute{
+    font-size: 8px;
+  }
+  .top-right{
+    padding-left: 10px;
+  }
+  .h4-logo{
+  font-size: 19px;
+  bottom: 0mm;
+}
+  .footer-right{
+    float: none;
+  }
+  .slide-img-1{
+    margin-left: 25%;
+    float: none;
+  }
+  .slide-img-2{
+    margin-left: 25%;
+    float: none;
+  }
+  .logo-photo{
+    height: 100px;
+    width: 100px;
+  }
+  .popular-header{
+    font-size:25px;
+    font-weight: 100;
+  }
+  .text-2{
+    font-size: 15px;
+    width: 100%;
+  }
+  .footer-left{
+    padding-left: 4px;
+  }
+  
+}

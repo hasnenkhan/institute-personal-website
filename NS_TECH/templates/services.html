@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'alternative-dropdown.css' %}">
+    <title>Services</title>
+</head>
+<body>
+      <div class="container">
+        <div class="items">
+          <div class="items-head">
+            <p>Services</p>
+            <hr>
+          </div>
+          
+          <div class="items-body">
+            <div class="items-body-content">
+              <span><a href="{% url 'admission' %}" class="tt"> Admission Form</a></span>
+              <i class="fa fa-angle-right"></i>
+            </div>
+            <div class="items-body-content">
+              <span><a href="{% url 'verification' %}" class="tt">Certificate / Diploma Verfication</a></span>
+              <i class="fa fa-angle-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+</body>
+</html>

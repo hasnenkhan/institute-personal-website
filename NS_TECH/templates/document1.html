@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'document.css' %}"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="pm-certificate-container">
+      <div class="outer-border"></div>
+      <div class="inner-border"></div>
+      
+      <div class="pm-certificate-border col-xs-12">
+          <div class="pm-certificate-title">
+            <p>Sr. No. {{ CertificateNumber }}</p>
+            <h2>NS Tech Institute of Technology</h2>
+          </div>
+  
+        <div class="row pm-certificate-body">
+          
+          <div class="pm-certificate-block">
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="certify">This is to certify that</div>
+                  <div class="pm-certificate-name margin-0 col-xs-8">
+                     <span class="pm-name-text bold">{{ Name }}</span>
+                  </div>
+                  <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                </div>
+              </div>          
+  
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                  <div class="pm-course-title col-xs-8 text-center">
+                    <span class="pm-earned-text block">has completed the training course entitled</span>
+                  </div>
+                  <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                </div>
+              </div>
+
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                  <div class="pm-course-title col-xs-8 text-center">
+                    <span class="pm-credits-text block bold sans">{{ Course }}</span>
+                  </div>
+                  <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                </div>
+              </div>
+
+              <div class="date">
+                <p>which is conducted from</p>
+                <p>
+                  <span class="bold sans">{{ From }}</span> 
+                  to 
+                  <span class="bold sans">{{ To }}</span> 
+                  ,</p>
+              </div>
+
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
+                  <div class="pm-earned col-xs-8 text-center">
+                    <span class="pm-earned-text padding-0 block">and has earned grade</span>
+                    <span class=" grade pm-credits-text">{{ Grade }}</span>
+                    <div>Issued Date {{ IssuedDate }} .</div>
+                  </div>
+                </div>
+              </div>
+
+          </div>    
+
+          <div class="image">
+              <div class="a">
+                <img src="{% static 'images/nstechstamp.png' %}" alt="stamp" class="stamp">
+              </div >
+              <div class="b"><p class="verified"> Verified</p></div>
+              <div class="c">
+                <img src="{% static 'images/tick.png' %}" alt="tick" class="tick">
+              </div>
+          </div>
+        </div>
+        <div>
+          <p class="last" style="clear: both;">This is a computer generated document.No signature required</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttondiv">
+      <img src="{% static 'images/buttons/printing.png' %}" alt="printbutton" class="print" onclick="window.print()">
+    </div>
+
+  </body>
+</html>
