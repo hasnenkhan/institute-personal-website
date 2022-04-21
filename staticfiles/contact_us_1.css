@@ -1,0 +1,63 @@
+.contact-us{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    height: 450px;
+}
+.address{
+    margin-top: 40px;
+    display: block;
+    float: left;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: 50px;
+    width: 50%;
+    height: 390px;
+    border: 3px solid rgb(90, 75, 75);
+}
+.address2{
+    text-align: center;
+    background-color: rgb(100, 141, 216);
+    display: block;
+    float: right;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-right: 50px;
+    width: 30%;
+    height: 390px;
+    border: 3px solid rgb(90, 75, 75);
+}
+.address2 h1{
+    color:rgb(238, 234, 234);
+    margin: 15px;
+}
+.address2 div{
+    margin-top: 25%;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+@media screen and (max-width:730px){
+  .address{
+    float: none;
+    margin-left: 30px;
+    width: 90%;
+}
+  .address2{
+    float: none;
+    margin-left: 30px;
+    width: 90%;
+}
+}
+@media screen and (max-width:330px){
+    .address{
+        margin-left: 5px;
+    }
+      .address2{
+        margin-left: 5px;
+    }
+    
+}
