@@ -1,1 +1,1 @@
-web: gunicorn NS_TECH.wsgi --log-file -
+web: gunicorn NS_TECh.wsgi --log-file -
