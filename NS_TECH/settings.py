@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-ao9-(d3*e045-6@1b#l+k59$ty#v4p1@1g44cdpbw7=cu+#$&o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['*']
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
