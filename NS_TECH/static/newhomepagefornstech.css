@@ -36,7 +36,6 @@
     text-align: center;
     padding-top: 1px;
     padding-bottom : 1px;
-    text-shadow: 2px 2px rgba(101, 22, 226, 0.363);
 }
 
 #top{
@@ -45,7 +44,7 @@
 }
 
 body{
-    background-color: rgb(228, 222, 222);
+  background-color: #f0eaea;
 }
 
 .h4-logo{
@@ -54,15 +53,12 @@ body{
     position: relative;
     text-shadow: none;
     bottom:3mm;
-    right :2mm;
+    right :3mm;
 }
 #bottom{
     background-color: tomato;
 }
 
-.search-txt{
-    font-size: 11mm;
-}
 
 * {box-sizing:border-box}
 
@@ -237,6 +233,20 @@ body{
   .reg-no{
     font-size:8px;
   }
+  .footer-left h3 {
+    font-size: 23px;
+  }
+  .logo-down{
+    margin-right: 25px;
+    font-size:small;
+  }
+  .name-of-institute{
+    font-size: 26px;
+    padding-bottom : 5px;
+ }
+  body{
+    background-color: #ade281;
+}
 }
 
 /* When the inputs get focus, do something */

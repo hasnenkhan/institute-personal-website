@@ -14,34 +14,6 @@ ALLOWED_HOSTS = ['*']
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
-'''
-#database
-DATABASES = {
-    'default':{
-        'ENGINE':'',
-    }
-}
-
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
-
-_MONGODB_USER = 'kashif'
-_MONGODB_PASSWD = 'L6r4999-7GKBRWu'
-_MONGODB_HOST = 'cluster0.y5vjc.mongodb.net'
-_MONGODB_NAME = 'certificate_verification?retryWrites=true&w=majority'
-_MONGODB_DATABASE_HOST = \
-    'mongodb://%s:%s@%s/%s' \
-    % (_MONGODB_USER, _MONGODB_PASSWD, _MONGODB_HOST, _MONGODB_NAME)
-
-mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
-
-# ...
-
-AUTHENTICATION_BACKENDS = (
-    'mongoengine.django.auth.MongoEngineBackend',
-) 
-'''
-
-
 # Application definition
 
 INSTALLED_APPS = [
