@@ -24,7 +24,7 @@
       <input type="text" placeholder="Enter Email" name="email" autocomplete="off" required/>
       <input type="text" placeholder="Enter Phone No" name="phone no." autocomplete="off" class="input" required/>
       <textarea name="message" id="msg" autocomplete="off" placeholder="Type your Message Here"></textarea>
-      <button type="submit" class="btn" name="submit">Submit</button>
+      <button type="submit" class="btn">Submit</button>
     </form>
   </div>
 
@@ -58,6 +58,7 @@
     <div><a href="{% url 'certificatecourses' %}" class="the">&nbsp;Certificate Courses&nbsp;&nbsp;</a></div>
     <div><a href="{% url 'diplomacourses' %}" class="the">&nbsp;Diploma Courses&nbsp;&nbsp;</a></div>
     <div><a href="{% url 'languagecourses' %}" class="the">&nbsp;Language Courses&nbsp;&nbsp;</a></div>
+    <div><a href="{% url 'contact_us' %}" class="the">&nbsp;Contact US&nbsp;&nbsp;</a></div>
   </div>
 
   <!--list of courses-->
@@ -163,19 +164,26 @@
   <!-- Full-width images with number and caption text -->
 
   <div class="mySlides fade">
-    <img src="{% static 'images/classrom2.jpg' %}" style="width:50%" class="slide-img-1">
+    <img src="{% static 'images/classroom8.jpg' %}" style="width:50%" class="slide-img-1">
     <div class="text-2">"Classroom Session"</div>
     <img src="{% static 'images/classroom3.jpg' %}" style="width:50%" class="slide-img-2">
     <div class="text-2">"Classroom Session"</div>
   </div>
   <div class="mySlides fade">
     <img src="{% static 'images/classroom4.jpg' %}" style="width:50%" class="slide-img-1">
-    <div class="text-2">"Examinations"</div>
+    <div class="text-2">"Classroom Session"</div>
     <img src="{% static 'images/classroom5.jpg' %}" style="width:50%" class="slide-img-2">
+    <div class="text-2">"Classroom Sesssion"</div>
+  </div>
+  <div class="mySlides fade">
+    <img src="{% static 'images/classroom7.jpg' %}" style="width:50%;height:350px;" class="slide-img-1">
+    <div class="text-2">"Classroom Session"</div>
+    <img src="{% static 'images/classroom9.jpg' %}" style="width:50%;height:350px;" class="slide-img-2">
     <div class="text-2">"Examinations"</div>
   </div>
   <div class="mySlides fade">
-    <img src="{% static 'images/classroom6.jpg' %}" style="width:50%" class="slide-img-1">
+    <img src="{% static 'images/office.jpg' %}" style="width:50%;height:360px;" class="slide-img-1">
+    <div class="text-2">"OFFICE"</div>
     <img src="{% static 'images/building_Of_ns_tech.jpg' %}" style="width:50%" class="slide-img-2">
     <div class="text-2">"INSTITUTE BUILDING"</div>
   </div>
@@ -191,6 +199,7 @@
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
 </div>
 </div>
 
@@ -225,7 +234,7 @@
 <!-- footer -->
 <div class = "last">
    <div class = "footer-left">
-      <h3><img src="{% static 'images/google-maps.png' %}" alt="location:" class = "footer-logos">&nbsp;Kabir Nagar (Athai) <br> Near Pankaj Haniman ,<br> Orai ,UTTAR PRADESH</h3> 
+      <h3><img src="{% static 'images/google-maps.png' %}" alt="location:" class = "footer-logos">&nbsp;H.N. 02,Kabir Nagar (Athai) <br> Near Pankaj Hahnemann ,<br> Orai ,UTTAR PRADESH</h3> 
       <h3><img src="{% static 'images/telephone-call.png' %}" alt="phone no:" class = "footer-logos">&nbsp;7068686810</h3>
       <h3><img src="{% static 'images/gmail.png' %}" alt="gmail:" class = "footer-logos">&nbsp;nstechorai@gmail.com</h3>
    </div>
@@ -233,9 +242,9 @@
      <h2>About the Company</h2>
      <h3>&nbsp;Since 2016, we have provided students<br>&nbsp;with a predominant learning experience<br> &nbsp;under the guidance of our mentors.<br>
       &nbsp;Your success is our aim.</h3>
-     <h3>&nbsp;&nbsp;<a href="http://instagram.com"><img src="{% static 'images/instagram.png' %}" alt="instagram" class = "footer-logos"></a>&nbsp;
-         <a href="http://facebook.com"><img src="{% static 'images/facebook.png' %}" alt="facebook" class = "footer-logos"></a>&nbsp;
-         <a href="http://github.com"><img src="{% static 'images/github.png' %}" alt="github" class = "footer-logos"></a>&nbsp;
+     <h3>&nbsp;&nbsp;<a href="http://instagram.com/nstechinstitute"><img src="{% static 'images/instagram.png' %}" alt="instagram" class = "footer-logos"></a>&nbsp;
+         <a href="http://facebook.com/NSTechorai"><img src="{% static 'images/facebook.png' %}" alt="facebook" class = "footer-logos"></a>&nbsp;
+         <a href="http://github.com/mirzakashif"><img src="{% static 'images/github.png' %}" alt="github" class = "footer-logos"></a>&nbsp;
          <a href="http://linkedin.com"><img src="{% static 'images/linkedin.png' %}" alt="linkedin" class = "footer-logos"></a>&nbsp;
     </h3>
    </div>
@@ -243,7 +252,7 @@
 <div  class="adminlinkdiv">
   <h3><a href="{% url 'admin' %}" class="adminlink">ADMINISTRATOR LOGIN</a></h3>
   <h4>designed by:&nbsp;&nbsp;&nbsp;
-    <a href="mailto:hasnenkhan06@gmail.com" class="adminlink">ARK Private Limited</a>
+    <a href="mailto:hasnenkhan06@gmail.com" class="adminlink">HAK Tech Solutions</a>
   </h4>
 
 </div>

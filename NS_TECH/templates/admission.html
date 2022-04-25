@@ -20,24 +20,21 @@ body, div, form, input, select, p {
   line-height: 22px;
   }
 /* file input for image */
-
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
+
 .custom-file-input::before {
   content: 'Photo';
   background: linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
   border-radius: 3px;
-  padding: 3px 27px;
+  padding: 3px 35px;
   outline: none;
   white-space: nowrap;
   cursor: pointer;
   font-weight: 400;
   font-size: 10pt;
-}
-.custom-file-input:hover::before {
-  border-color: black;
 }
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
@@ -59,13 +56,27 @@ body, div, form, input, select, p {
 #top{
     text-align: right;
 }
+.thumb h6 {
+  margin-top: 95%;
+  text-align: center;
+}
 
 .thumb{
   margin-right: 10px;
   width: 130px;
-  height:130px;
+  height:140px;
   border: 2px solid black;
   float: right;
+}
+#display-image{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 130px;
+  height: 130px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
 }
 
 .photo{
@@ -179,6 +190,7 @@ body, div, form, input, select, p {
       z-index: 2;
       opacity: 0;
       cursor: pointer;
+      width:100%;
       }
       input[type=checkbox]  {
       display: none;
@@ -259,19 +271,6 @@ body, div, form, input, select, p {
       width: calc(50% - 8px);
       }
      }
-     /*
-     .signdiv{
-       margin-top: 5%;
-     }
-      .sign{
-        text-align: center;
-      }
-      .signname{
-        text-align: center;
-      }
-      .nameedit{
-        margin-left: 0%;
-      } */
       .signs{
         margin-top: 9%;
         margin-bottom: 4%;
@@ -296,8 +295,10 @@ body, div, form, input, select, p {
         <div id= "top">
           <div class="topri">
           <div class="photo">
-            <h6 style="margin: 10%;">
-              <input type="file" class="custom-file-input"  name="attachment" accept="image/png, image/jpeg">
+            <h6 style="margin: 0%;">
+              <div id="display-image"></div>
+              <input type="file" class="custom-file-input" onchange="display()" name="attachment" id="image-input"
+              accept="image/png,image/jpeg,image/jpg">
             </h6>
             </div>
           </div>     
@@ -308,7 +309,7 @@ body, div, form, input, select, p {
           </div>
         </div>
         <h2 class="srno">Sr. No. ______ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reg. Fees: <u>200&nbsp;&nbsp;&nbsp;</u>
+          &nbsp;&nbsp;&nbsp;
         </h2>
         <div class="item">
           <div class="name-item">
@@ -332,9 +333,9 @@ body, div, form, input, select, p {
             <div class="question">
                   Gender&nbsp;&nbsp;&nbsp;:
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="checkbox" value="Yes" id="male" class="gender" name="Male"/>
+                  <input type="checkbox" value="Yes" id="male" onclick="ifmale();" class="gender" name="Male"/>
                   <label for="male" class="check"><span>Male</span></label>
-                  <input type="checkbox" value="Yes" id="Female" class="gender" name="Female"/>
+                  <input type="checkbox" value="Yes" id="Female" onclick="iffemale();" class="gender" name="Female"/>
                   <label for="Female" class="check"><span>Female</span></label>
                 </div>
           </div>
@@ -485,7 +486,9 @@ body, div, form, input, select, p {
         </div>
         <div class="thumb-item">
           <input type="text" name="Batch Timing" placeholder="Batch Timing"/>
-          <div class="thumb"><h6 style="margin: 25%;">Left Thumb Impression</h6></div>
+          <div class="thumb">
+            <h6>Left Thumb Impression</h6>
+          </div>
         </div>
         <div class="question">
               <input type="checkbox" value="Agreed" id="check_1" name="Agreed Or Not" required/>
@@ -493,38 +496,7 @@ body, div, form, input, select, p {
                 all particulars in the admission form <br>are true to the best
                 of my knowledge and belief"</span></label>
         </div>
-   
-<!--
-        <div class="signdiv">
-          <div class="sign">
-            <span>______________________&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              _________________________
-              &nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              ________________________</span>
-          </div>
-          <div class="signname">
-            <span class="nameedit">Signature of Student
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              Manager
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              Signature of Parents/Guardian</span>
-          </div>
-        </div>-->
+
        <div class="signs">
         <div class="signnames">
           <span>
@@ -559,6 +531,42 @@ body, div, form, input, select, p {
           document.getElementById("husbandname").disabled = false;
           document.getElementById("occupation").disabled = false;
         }
+      }
+
+      // if male     
+      function ifmale() {
+        var x = document.getElementById('male').value;
+        if (x == "Yes"){
+          document.getElementById("husbandname").disabled = true;
+          document.getElementById("occupation").disabled = true;
+          document.getElementById("Female").checked = false;
+          }
+        }
+
+      // if female
+      function iffemale(){
+        var y = document.getElementById('Female').value;
+        if (y == "Yes"){
+          document.getElementById("husbandname").disabled = false;
+          document.getElementById("occupation").disabled = false;
+          document.getElementById("male").checked = false;
+        }
+      }
+
+      // img show
+      const image_input = document.querySelector("#image-input");
+      image_input.addEventListener("change", function() {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+      const uploaded_image = reader.result;
+      document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+      });
+      reader.readAsDataURL(this.files[0]);
+      });
+
+      // display photo
+      function display(){
+        document.getElementById("display-image").style.display = "block";
       }
     </script>
   </body>

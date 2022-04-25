@@ -138,6 +138,7 @@
         z-index: 1;
     }
 }
+
 @media screen and (max-width:360px){
     .alternative-dropdown{
       font-size: 21px;

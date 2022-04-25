@@ -216,12 +216,15 @@ def subadmin(request):
 
 @login_required
 def changepassword(request):
-    select = request.POST.get('select')
-    passw = request.POST.get("pass1")
-    if select == "1":
-        collections2.update_one({"username":"kashif"},{"$set":{"password":passw}})
-        return HttpResponseRedirect("/admin/kashif")
-    elif select == "2":
-        collections2.update_one({"username":"subadmin"},{"$set":{"password":passw}})
-        return HttpResponseRedirect("/admin/kashif")
+    if request.POST.get('pass1') == request.POST.get('pass2'):
+        select = request.POST.get('select')
+        passw = request.POST.get("pass1")
+        if select == "1":
+            collections2.update_one({"username":"nstech"},{"$set":{"password":passw}})
+            return HttpResponseRedirect("/admin/kashif")
+        elif select == "2":
+            collections2.update_one({"username":"subadmin"},{"$set":{"password":passw}})
+            return HttpResponseRedirect("/admin/kashif")
+    else:
+        return render(request,'changepassword.html',{"message":1})
     return render(request,'changepassword.html')

@@ -24,14 +24,18 @@
     </div>
     </div>
     <span class = "reg-no">Reg No <br>JAL/06757 <BR>UP-37-0000622<BR>
-    <form action="{% url 'adminpage' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" class="logout" name="logout" value="Log Out"></form><br>
     </span>
     <div class= "name-of-institute">
       <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
     <h2 class= "h4-logo">An Institute for Learning Advanced Technology</h2>
     </div>
+  </div>
+
+  <div>
+    <form action="{% url 'adminpage' %}" method="post" style="float:right;margin-right: 20px;">
+      {% csrf_token %}
+      <input type="submit" class="logout" name="logout" value="Log Out">
+      </form>
   </div>
 
   <!--studentdatatable and buttons-->
@@ -41,33 +45,33 @@
       <!--buttons for add , delete etc-->
       <div class="but">
       <div class="filebuttonsdiv">
-        <img src="{% static 'images/ns_tech_logo.png' %}" alt="logo" class ='logosmall'>
+        <!--<img src="{% static 'images/ns_tech_logo.png' %}" alt="logo" class ='logosmall'>-->
         <div>
           <div>
-            <button class="glow-on-hover" type="button" onclick="openForm()">
+            <button class="glow-on-hover" type="button" title="Add" onclick="openForm()">
               <img src="{% static 'images/buttons/add-user.png' %}" alt="add" class="buttons">
             </button>
-            <button class="glow-on-hover" type="button"><a href="{% url 'adminedit' %}">
+            <button class="glow-on-hover" title="Edit" type="button"><a href="{% url 'adminedit' %}">
             <img src="{% static 'images/buttons/edit.png' %}" alt="edit" class="buttons"></a>
             </button>
-            <button class="glow-on-hover" type="button" onclick="openForm4()">
+            <button class="glow-on-hover" type="button" title="Search" onclick="openForm4()">
             <img src="{% static 'images/buttons/search.png' %}" alt="search" class="buttons">
             </button>
-            <button class="glow-on-hover" type="button" onclick="openForm5()">
+            <button class="glow-on-hover" type="button" title="Permissions" onclick="openForm5()">
               <img src="{% static 'images/buttons/admin.png' %}" alt="subadmin" class="buttons">
               </button>
           </div>
           <div>
-            <button class="glow-on-hover" type="button" onclick="openForm2()">
+            <button class="glow-on-hover" type="button" title="Delete" onclick="openForm2()">
             <img src="{% static 'images/buttons/delete.png' %}" alt="delete" class="buttons">
             </button>
-            <button class="glow-on-hover" type="button" onclick="exprt('xlsx','studentsdata')">
+            <button class="glow-on-hover" type="button" title="Download" onclick="exprt('xlsx','studentsdata')">
             <img src="{% static 'images/buttons/download.png' %}" alt="download" class="buttons">
             </button>
-            <button class="glow-on-hover" type="button"><a href="{% url 'changepassword' %}">
+            <button class="glow-on-hover" title="Change Password" type="button"><a href="{% url 'changepassword' %}">
               <img src="{% static 'images/buttons/settings.png' %}" alt="setting" class="buttons"></a>
               </button>
-            <button class="glow-on-hover" type="button" onclick="openForm3()">
+            <button class="glow-on-hover" title="Delete Database" type="button" onclick="openForm3()">
             <img src="{% static 'images/buttons/delete-database.png' %}" alt="del-database" class="buttons">
             </button>
           </div>
