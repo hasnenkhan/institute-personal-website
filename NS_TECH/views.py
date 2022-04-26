@@ -70,12 +70,13 @@ def adminlogin(request):
     global id , password
     id = request.POST.get('id')
     password = request.POST.get('pass')
-    if collections2.find_one({"password": request.POST.get('pass'),"username":"nstech"}):
-        request.session["admin"] = True
-        return HttpResponseRedirect('/admin/kashif')
-    elif collections2.find_one({"password": request.POST.get('pass'),"username":"subadmin"}):
-        request.session['subadmin'] = True
-        return HttpResponseRedirect('/subadmin')
+    if collections2.find_one({"password":password,"username":id}):
+        if id == "nstech":
+            request.session["admin"] = True
+            return HttpResponseRedirect('/admin/kashif')
+        elif id == "subadmin":
+            request.session['subadmin'] = True
+            return HttpResponseRedirect('/subadmin')
     else:
         return render(request, 'adminlogin.html')
 
