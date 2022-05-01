@@ -161,6 +161,42 @@ body{
   float: right;
 }
 
+.chosenone{
+  height:330px;
+}
+
+@media screen and (max-width:1120px){
+  .chosenone{
+    height: 300px;
+  }
+}
+@media screen and (max-width:1012px){
+  .chosenone{
+    height: 280px;
+  }
+}
+@media screen and (max-width:942px){
+  .chosenone{
+    height: 240px;
+  }
+}
+@media screen and (max-width:800px){
+  .chosenone{
+    height: 200px;
+  }
+}
+@media screen and (max-width:657px){
+  .chosenone{
+    height: 160px;
+  }
+}
+@media screen and (max-width:420px){
+  .chosenone{
+    height: 110px;
+  }
+}
+
+
 /* entry form popup*/
 .form-popup {
   width: 35%;
@@ -223,18 +259,11 @@ body{
   .form-container input[type=text] {
     margin: 0px 0px 20px 12px;
   }
-  .prev, .next {
-    font-weight: bold;
-    font-size: 25px;
-  }
   .slideshow-container {
     padding-top: 20px;
   }
   .reg-no{
     font-size:8px;
-  }
-  .footer-left h3 {
-    font-size: 23px;
   }
   .logo-down{
     margin-right: 25px;
@@ -244,9 +273,26 @@ body{
     font-size: 26px;
     padding-bottom : 5px;
  }
+}
+@media screen and (max-width:420px){
+  .prev, .next {
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+@media screen and (max-width:420px){
+  .footer-left {
+    float: none;
+  }
+  .footer-right {
+    float: none;
+  }
   body{
     background-color: #ade281;
-}
+  }
+  .footer-left h3 {
+    font-size: 23px;
+  }
 }
 
 /* When the inputs get focus, do something */
@@ -294,17 +340,7 @@ body{
 }
 
 .last{
-    background-image: url("--images/footer-wallpaper.jpg");
-    overflow: hidden;
-}
-
-.list-of-courses-I{
-    text-align: left;
-
-}
-
-.list-of-courses-II{
-    text-align: justify;
+  overflow: hidden;
 }
 
 .ul{
@@ -434,12 +470,18 @@ body{
 
 .adminlinkdiv{
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 2px;
+}
+
+@media screen and (max-width:420px){
+  .adminlinkdiv{
+  font-size: 12px;
+  }
 }
 
 .adminlink{
   text-decoration: none;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 .adminlink:hover {

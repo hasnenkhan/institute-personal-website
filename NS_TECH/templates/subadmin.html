@@ -19,18 +19,20 @@
   <div id= "top">
     <div class = "top-right"> 
     <img src="{% static 'images/ns_tech_logo.png' %}" alt="Ns_Tech Logo" class = "logo-photo">
-    <div class= "logo-down">
-      <span class = "estd">Estd. 2016</span>
+      <div class= "logo-down">
+      Estd. 2016
+      </div>
     </div>
-    </div>
-    <span class = "reg-no">Reg No <br>JAL/06757 <BR>UP-37-0000622</BR>
-    <form action="{% url 'subadmin' %}" method="post">
-    {% csrf_token %}
-    <input type="submit" class="logout" name="logout" value="Log Out"></form><br></span>
     <div class= "name-of-institute">
-    <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
+      <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
     <h2 class= "h4-logo">An Institute for Learning Advanced Technology</h2>
     </div>
+  </div>
+  <div>
+    <form action="{% url 'subadmin' %}" method="post" style="float:right;margin-right: 20px;">
+      {% csrf_token %}
+      <input type="submit" class="logout" name="Log Out" value="Log Out">
+      </form>
   </div>
 
   <!--studentdatatable and buttons-->
@@ -40,48 +42,37 @@
       <!--buttons for add , delete etc-->
       <div class="but">
       <div class="filebuttonsdiv">
-        <img src="{% static 'images/ns_tech_logo.png' %}" alt="logo" class ='logosmall'>
         <div>
           <div>
             {% if add %}
-            <button class="glow-on-hover" type="button" onclick="openForm()">
+            <button class="glow-on-hover" type="button" title="Add" onclick="openForm()">
             <img src="{% static 'images/buttons/add-user.png' %}" alt="add" class="buttons">
             </button>
             {% endif %}
             {% if edit %}
-            <button class="glow-on-hover" type="button"><a href="{% url 'adminedit' %}">
+            <button class="glow-on-hover" title="Edit" type="button"><a href="{% url 'adminedit' %}">
             <img src="{% static 'images/buttons/edit.png' %}" alt="edit" class="buttons"></a>
             </button>
             {% endif %}
             {% if search %}
-            <button class="glow-on-hover" type="button" onclick="openForm4()">
+            <button class="glow-on-hover" title="Search" type="button" onclick="openForm4()">
             <img src="{% static 'images/buttons/search.png' %}" alt="search" class="buttons">
-            </button>
-            {% endif %}
-            {% if subadmin %}
-            <button class="glow-on-hover" type="button" onclick="openForm5()">
-            <img src="{% static 'images/buttons/admin.png' %}" alt="subadmin" class="buttons">
             </button>
             {% endif %} 
           </div>
           <div>
             {% if delete %}
-            <button class="glow-on-hover" type="button" onclick="openForm2()">
+            <button class="glow-on-hover" title="Delete" type="button" onclick="openForm2()">
             <img src="{% static 'images/buttons/delete.png' %}" alt="delete" class="buttons">
             </button>
             {% endif %}
             {% if download %}
-            <button class="glow-on-hover" type="button" onclick="exprt('xlsx','studentsdata')">
+            <button class="glow-on-hover" title="Download" type="button" onclick="exprt('xlsx','studentsdata')">
             <img src="{% static 'images/buttons/download.png' %}" alt="download" class="buttons">
             </button>
             {% endif %}
-            {% if setting %}
-            <button class="glow-on-hover" type="button">
-            <img src="{% static 'images/buttons/settings.png' %}" alt="setting" class="buttons">
-            </button>
-            {% endif %}
             {% if deldatabase %}
-            <button class="glow-on-hover" type="button" onclick="openForm3()">
+            <button class="glow-on-hover" title="Delete Database" type="button" onclick="openForm3()">
             <img src="{% static 'images/buttons/delete-database.png' %}" alt="del-database" class="buttons">
             </button>
             {% endif %}
@@ -90,7 +81,7 @@
       </div>
       {% if xlsxfile %}
       <div class="filebuttonsdiv">
-        <form action="{% url 'adminpage' %}" 
+        <form action="{% url 'subadmin' %}" 
         accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
          method="POST" style="margin:18%;" enctype="multipart/form-data">
           {% csrf_token %}
@@ -144,7 +135,7 @@
     <!--add student form-->
 
     <div class="form-popup-A" id="myForm">
-      <form action="{% url 'adminpage' %}" class="form-container-A" method="POST">
+      <form action="{% url 'subadmin' %}" class="form-container-A" method="POST">
         {% csrf_token %}
         <h2 style="margin-left: 20px;">Add</h2>
         <input type="text" placeholder="Enter Certificate Number" name="certificate" autocomplete="off"required>
@@ -168,7 +159,7 @@
     <!--delete one student-->
 
     <div class="form-popup" id="myForm2">
-      <form action="{% url 'adminpage' %}" class="form-container" method="POST">
+      <form action="{% url 'subadmin' %}" class="form-container" method="POST">
         {% csrf_token %}
         <h2>Delete</h2>
         <input type="text" placeholder="Enter Certificate Number" name="certificate2" autocomplete="off" required>
@@ -180,7 +171,7 @@
     <!--delete all student-->
 
     <div class="form-popup" id="myForm3">
-      <form action="{% url 'adminpage' %}" class="form-container" method="POST">
+      <form action="{% url 'subadmin' %}" class="form-container" method="POST">
         {% csrf_token %}
         <h2 style="text-align: center;">Are You Sure</h2>
         <button type="submit" class="btn" name="deleteall">Yes</button>
@@ -191,37 +182,12 @@
     <!--search the data of students-->
 
     <div class="form-popup" id="myForm4">
-      <form action="{% url 'adminpage' %}" class="form-container" method="POST">
+      <form action="{% url 'subadmin' %}" class="form-container" method="POST">
         {% csrf_token %}
         <h2 style="text-align: center;">Search</h2>
         <input type="text" placeholder="Enter Certificate Number" name="search"  autocomplete="off" required>
         <button type="submit" class="btn" name="searches">Search</button>
         <button type="button" class="btn cancel" onclick="closeForm4()">Close</button>
-      </form>
-    </div>
-
-     <!--subadmin permission-->
-
-     <div class="form-popup" id="myForm5">
-      <form action="{% url 'subadminpermissions' %}" class="form-container" method="POST">
-        {% csrf_token %}
-        <h2 style="text-align: center;">Permissions Of Subadmin</h2>
-        <input type="checkbox" name="add" id="add" value="1">
-        <label for="add">Add Student</label><br>
-        <input type="checkbox" name="edit" id="edit" value="1">
-        <label for="edit">Edit Student</label><br>
-        <input type="checkbox" name="search" id="search" value="1">
-        <label for="search">Search Student</label><br>
-        <input type="checkbox" name="delete" id="del" value="1">
-        <label for="del">Delete Student</label><br>
-        <input type="checkbox" name="download" id="download" value="1">
-        <label for="download">Download Data of Student</label><br>
-        <input type="checkbox" name="deldatabase" id="deldatabase" value="1">
-        <label for="deldatabase">Delete Database</label><br>
-        <input type="checkbox" name="passwordchange" id="passwordchange" value="1">
-        <label for="passwordchange">Password Change</label><br><br>
-        <button type="submit" class="btn" name="edit">Submit</button>
-        <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>
       </form>
     </div>
 

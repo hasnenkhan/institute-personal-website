@@ -6,6 +6,7 @@
   <meta name="referrer" content="origin"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% load static %} 
+  <link rel="icon" href="{% static 'favicon.ico' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'newhomepagefornstech.css' %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'dropdownmenus.css' %}"/>
   <title>NS TECH</title>
@@ -176,13 +177,13 @@
     <div class="text-2">"Classroom Sesssion"</div>
   </div>
   <div class="mySlides fade">
-    <img src="{% static 'images/classroom7.JPG' %}" style="width:50%;height:330px;" class="slide-img-1">
+    <img src="{% static 'images/classroom7.JPG' %}" style="width:50%" class="slide-img-1 chosenone">
     <div class="text-2">"Examinations"</div>
-    <img src="{% static 'images/classroom9.jpg' %}" style="width:50%;height:330px;" class="slide-img-2">
+    <img src="{% static 'images/classroom9.jpg' %}" style="width:50%" class="slide-img-2 chosenone">
     <div class="text-2">"Classroom Session"</div>
   </div>
   <div class="mySlides fade">
-    <img src="{% static 'images/Office.jpg' %}" style="width:50%;height:330px;" class="slide-img-1">
+    <img src="{% static 'images/Office.jpg' %}" style="width:50%" class="slide-img-1 chosenone">
     <div class="text-2">"INSTITUTE BUILDING"</div>
     <img src="{% static 'images/building_Of_ns_tech.jpg' %}" style="width:50%" class="slide-img-2">
     <div class="text-2">"OFFICE"</div>
@@ -250,11 +251,16 @@
    </div>
 </div>
 <div  class="adminlinkdiv">
-  <h3><a href="{% url 'admin' %}" class="adminlink">ADMINISTRATOR LOGIN</a></h3>
-  <h4>designed by:&nbsp;&nbsp;&nbsp;
+  <h4><a href="{% url 'admin' %}" class="adminlink">ADMINISTRATOR LOGIN</a></h4>
+  <p>maintained by:&nbsp;&nbsp;&nbsp;
+    <a href="mailto:nstechorai@gmail.com" class="adminlink">NS TECH INSTITUTE OF TECHNOLOGY</a>
+  </p>
+  <p>designed by:&nbsp;&nbsp;&nbsp;
     <a href="mailto:hasnenkhan06@gmail.com" class="adminlink">HAK Tech Solutions</a>
-  </h4>
-
+  </p>
+  <p>
+    Copyright © 2022 HAK Tech Solutions Private Limited. All Rights Reserved.
+  </p>
 </div>
 <script src="{% static 'javascript/newhomepagefornstech.js' %}"></script>
 </body>

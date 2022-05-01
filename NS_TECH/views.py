@@ -111,10 +111,12 @@ def adminpage(request):
             for i in range(len(df)):
                 frdate = str(data.iat[i,6].month_name()[slice(3)]).ljust(4,"-") + str(data.iat[i,6].strftime('%Y'))
                 todate = str(data.iat[i,7].month_name()[slice(3)]).ljust(4,"-") + str(data.iat[i,7].strftime('%Y'))
-                issuedate = str(data.iat[i,8]).split(" ")
-                li.append({"CertificateNumber": data.iat[i,0],"Name": data.iat[i,1],"FatherName": data.iat[i,2],
-                "Course":data.iat[i,3],"Months":str(data.iat[i,4]),"CertificateType":data.iat[i,5],"From":frdate,
-                "To":todate,"IssuedDate":issuedate[0],"Grade":data.iat[i,9]})
+                issuedate = str(data.iat[i,8].strftime('%d-%m-%Y'))
+                li.append({"CertificateNumber":str(data.iat[i,0]).upper(),
+                "Name":str(data.iat[i,1]).capitalize(),"FatherName": str(data.iat[i,2]).capitalize(),
+                "Course":str(data.iat[i,3]).upper(),"Months":str(data.iat[i,4]),
+                "CertificateType":str(data.iat[i,5]).capitalize(),"From":frdate,
+                "To":todate,"IssuedDate":issuedate,"Grade":str(data.iat[i,9]).upper()})
             collections.insert_many(li)
         except ValueError:
             return HttpResponse("<h1>Please Upload only xlsx File Not Any Other File Format</h1>")
@@ -124,14 +126,13 @@ def adminpage(request):
     if 'deleteall' in request.POST:
         collections.delete_many({})
     
-
     if 'searches' in request.POST:
-        srchno = str(request.POST.get('search'))
+        srchno = str(request.POST.get('search')).upper()
         result = list(collections.find({"CertificateNumber": {"$regex":srchno}}))
         arr = {"context": result}
         return render(request, "searches.html",arr)
     
-    if 'logout' in request.POST:
+    if 'Log Out' in request.POST:
         del request.session["admin"]
         return HttpResponseRedirect("/")
 
@@ -142,15 +143,15 @@ def adminpage(request):
 @login_requireddd
 def adminedit(request):
     if 'submit' in request.POST:
-        certificate1 = request.POST.get('certificate1')
-        certificate = request.POST.get('certificate')
-        name = request.POST.get('name')
-        fathername = request.POST.get('fathername')
-        type = request.POST.get('type')
-        course = request.POST.get('course')
+        certificate1 = request.POST.get('certificate1').upper()
+        certificate = request.POST.get('certificate').upper()
+        name = request.POST.get('name').capitalize()
+        fathername = request.POST.get('fathername').capitalize()
+        type = request.POST.get('type').capitalize()
+        course = request.POST.get('course').upper()
         months = request.POST.get('months')
         issued = request.POST.get('issued')
-        grade = request.POST.get('grade')
+        grade = request.POST.get('grade').upper()
         fromm = request.POST.get('from')
         too = request.POST.get('too')
         if certificate:
@@ -173,7 +174,7 @@ def adminedit(request):
             collections.update_one({"CertificateNumber":certificate1},{"$set":{"From":fromm}})
         if too:
             collections.update_one({"CertificateNumber":certificate1},{"$set":{"To":too}})
-        return HttpResponseRedirect("/admin/kashif")
+        return HttpResponseRedirect("/admin")
     return render(request,'editstudent.html')
 
 def ourservices(request):
@@ -204,9 +205,58 @@ def subadminpermissions(request):
 @login_requiredd
 def subadmin(request):
     try:
-        if 'logout' in request.POST:
+        if 'adding' in request.POST:
+            name = request.POST.get('name').capitalize()
+            fathername = request.POST.get('fathername').capitalize()
+            type = request.POST.get('type').capitalize()
+            certificate = request.POST.get('certificate').upper()
+            course = request.POST.get('course').capitalize()
+            months = request.POST.get('months')
+            issued = request.POST.get('issued')
+            grade = request.POST.get('grade').capitalize()
+            fromm = request.POST.get('from')
+            too = request.POST.get('too')
+            collections.insert_one({"Name": name, "CertificateNumber": certificate,
+            "Course": course, "Grade": grade, "From": fromm, "To": too,
+            "FatherName": fathername, "CertificateType":type, "Months": months, "IssuedDate": issued})
+
+        if 'deleting' in request.POST:
+            certificate = request.POST.get('certificate2')
+            collections.delete_many({'CertificateNumber': certificate })
+
+        if 'deleteall' in request.POST:
+            collections.delete_many({})
+    
+        if 'searches' in request.POST:
+            srchno = str(request.POST.get('search')).upper()
+            result = list(collections.find({"CertificateNumber": {"$regex":srchno}}))
+            arr = {"context": result}
+            return render(request, "searches.html",arr)
+
+        if 'Log Out' in request.POST:
             del request.session["subadmin"]
             return HttpResponseRedirect("/")
+        
+        if 'thefile' in request.POST:
+            try:
+                file = request.FILES['thefile']
+                df = pd.read_excel(file)
+                data = pd.DataFrame(df)
+                li = []
+                for i in range(len(df)):
+                    frdate = str(data.iat[i,6].month_name()[slice(3)]).ljust(4,"-") + str(data.iat[i,6].strftime('%Y'))
+                    todate = str(data.iat[i,7].month_name()[slice(3)]).ljust(4,"-") + str(data.iat[i,7].strftime('%Y'))
+                    issuedate = str(data.iat[i,8].strftime('%d-%m-%Y'))
+                    li.append({"CertificateNumber":str(data.iat[i,0]).upper(),
+                    "Name":str(data.iat[i,1]).capitalize(),"FatherName": str(data.iat[i,2]).capitalize(),
+                    "Course":str(data.iat[i,3]).upper(),"Months":str(data.iat[i,4]),
+                    "CertificateType":str(data.iat[i,5]).capitalize(),"From":frdate,
+                    "To":todate,"IssuedDate":issuedate,"Grade":str(data.iat[i,9]).upper()})
+                collections.insert_many(li)
+            except ValueError:
+                return HttpResponse("<h1>Please Upload only xlsx File Not Any Other File Format</h1>")
+            except AttributeError:
+                return HttpResponse("<h1>Please Upload File which have Dates in Date Format in xlxs File</h1>")
 
         global xodus
         x = list(collections.find({}))

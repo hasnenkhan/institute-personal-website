@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
 html, body {
-  min-height: 100%;
+  min-height: 110%;
   }
 body, div, form, input, select, p { 
   padding: 0;
@@ -19,6 +19,7 @@ body, div, form, input, select, p {
   color: #666;
   line-height: 22px;
   }
+
 /* file input for image */
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -44,7 +45,6 @@ body, div, form, input, select, p {
   color:rgb(5,57,97);
 }
 
-
 .name-of-institute{
   color: rgb(0 , 112 , 192);
     font-size: 13px;
@@ -54,17 +54,16 @@ body, div, form, input, select, p {
 }
 
 #top{
-    text-align: right;
+  text-align: right;
 }
 .thumb h6 {
-  margin-top: 95%;
+  margin-top: 88%;
   text-align: center;
 }
-
 .thumb{
   margin-right: 10px;
   width: 130px;
-  height:140px;
+  height:130px;
   border: 2px solid black;
   float: right;
 }
@@ -103,14 +102,14 @@ body, div, form, input, select, p {
     float: right;
   }
 }
-      h1 {
-      margin: 0;
-      z-index: 2;
-      }
-      .srno{
-        color:red;
-      }
-      h2 {
+h1 {
+  margin: 0;
+  z-index: 2;
+  }
+  .srno{
+    color:red;
+  }
+  h2 {
       font-weight: 200;
       }
       .testbox {
@@ -181,7 +180,7 @@ body, div, form, input, select, p {
       color: #a9a9a9;
       }
       .item i {
-      right: 2%;
+      right: 53%;
       top: 30px;
       z-index: 1;
       }
@@ -272,7 +271,7 @@ body, div, form, input, select, p {
       }
      }
       .signs{
-        margin-top: 9%;
+        margin-top: 6%;
         margin-bottom: 4%;
       }
       .line2 {
@@ -295,7 +294,7 @@ body, div, form, input, select, p {
         <div id= "top">
           <div class="topri">
           <div class="photo">
-            <h6 style="margin: 0%;">
+            <h6>
               <div id="display-image"></div>
               <input type="file" class="custom-file-input" onchange="display()" name="attachment" id="image-input"
               accept="image/png,image/jpeg,image/jpg">
@@ -348,19 +347,21 @@ body, div, form, input, select, p {
         </div>
           <div class="item">
             <p>Date of Birth</p>
+            <div class="city-item">
             <input type="date" name="Date of Birth" required/>
             <i class="fas fa-calendar-alt"></i>
+            <select name="Religion" required>
+              <option value="">Religion</option>
+              <option value="Muslim">Muslim</option>
+              <option value="Christian">Christian</option>
+              <option value="Sikh">Sikh</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Other">Other</option>
+            </select>
+            </div>
           </div>
           <div class="item">
             <div class="city-item">
-              <select name="Religion" required>
-                <option value="">Religion</option>
-                <option value="Muslim">Muslim</option>
-                <option value="Christian">Christian</option>
-                <option value="Sikh">Sikh</option>
-                <option value="Hindu">Hindu</option>
-                <option value="Other">Other</option>
-              </select>
               <select name="Category" required>
                 <option value="">Category</option>
                 <option value="General">General</option>
@@ -368,15 +369,15 @@ body, div, form, input, select, p {
                 <option value="SC">SC</option>
                 <option value="ST">ST</option>
               </select>
+              <input type="text" name="Street address" placeholder="Street address" />
             </div>
           </div>
         <div class="item">
           <div class="name-item">
-          <input type="text" name="Street address" placeholder="Street address" />
           <input type="text" name="Postal/Zip code" placeholder="Postal / Zip code" required/>
+          <input type="text" name="Adhaar Number" placeholder="Adhaar Number" required>
           </div>
         </div>
-        <h2>Qualification & Identification Details</h2>
         <div class="triple-item">
           <select class="Class 10th Passing Year" required>
             <option value="">Class 10th Passing Year</option>
@@ -481,11 +482,10 @@ body, div, form, input, select, p {
           </select>
         </div>
         <div class="city-item">
-          <input type="text" name="Adhaar Number" placeholder="Adhaar Number" required>
           <input type="text" name="Name of Course" placeholder="Name of Course" required/>
+          <input type="text" name="Batch Timing" placeholder="Batch Timing"/>
         </div>
         <div class="thumb-item">
-          <input type="text" name="Batch Timing" placeholder="Batch Timing"/>
           <div class="thumb">
             <h6>Left Thumb Impression</h6>
           </div>
@@ -503,13 +503,9 @@ body, div, form, input, select, p {
             Student Sign
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp; 
             Office Use
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;
             Parents/Guardian Sign</span>
         </div>
        </div>

@@ -19,12 +19,10 @@
   <div id= "top">
     <div class = "top-right"> 
     <img src="{% static 'images/ns_tech_logo.png' %}" alt="Ns_Tech Logo" class = "logo-photo">
-    <div class= "logo-down">
-      <span class = "estd">Estd. 2016</span>
+      <div class= "logo-down">
+      Estd. 2016
+      </div>
     </div>
-    </div>
-    <span class = "reg-no">Reg No <br>JAL/06757 <BR>UP-37-0000622<BR>
-    </span>
     <div class= "name-of-institute">
       <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
     <h2 class= "h4-logo">An Institute for Learning Advanced Technology</h2>
@@ -34,7 +32,7 @@
   <div>
     <form action="{% url 'adminpage' %}" method="post" style="float:right;margin-right: 20px;">
       {% csrf_token %}
-      <input type="submit" class="logout" name="logout" value="Log Out">
+      <input type="submit" class="logout" name="Log Out" value="Log Out">
       </form>
   </div>
 
@@ -45,7 +43,6 @@
       <!--buttons for add , delete etc-->
       <div class="but">
       <div class="filebuttonsdiv">
-        <!--<img src="{% static 'images/ns_tech_logo.png' %}" alt="logo" class ='logosmall'>-->
         <div>
           <div>
             <button class="glow-on-hover" type="button" title="Add" onclick="openForm()">
@@ -134,15 +131,15 @@
       <form action="{% url 'adminpage' %}" class="form-container-A" method="POST">
         {% csrf_token %}
         <h2 style="margin-left: 20px;">Add</h2>
-        <input type="text" placeholder="Enter Certificate Number" name="certificate" autocomplete="off"required>
+        <input type="text" placeholder="Enter Certificate Number" name="certificate"  autocapitalize="on" autocomplete="off"required>
         <input type="text" placeholder="Enter NAME" name="name" autocomplete="off" required>
         <input type="text" placeholder="Enter Father NAME" name="fathername" autocomplete="off" required>
         <input type="text" placeholder="Enter Course Name" name="course" autocomplete="off" required>
         <input type="text" placeholder="Enter Months" name="months" autocomplete="off" required>
         <input type="text" placeholder="Enter Type" name="type" autocomplete="off" required>
         <input type="text" placeholder="Enter Grade" name="grade" autocomplete="off" required>
-        <input type="text" placeholder="Conducted From" name="from">
-        <input type="text" placeholder="Conducted to" name="too">
+        <input type="text" placeholder="Conducted From (MM-YYYY)" name="from">
+        <input type="text" placeholder="Conducted to (MM-YYYY)" name="too">
         <label for="issue"><h5 style="margin-left: 20px;">Issued Date:</h5></label>
         <input type="date" name="issued">
         <button type="submit" class="btn" name="adding">Submit</button>
