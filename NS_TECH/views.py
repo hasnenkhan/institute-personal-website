@@ -140,7 +140,7 @@ def adminpage(request):
     args = {"context":x }
     return render(request,'adminpage.html',args)
 
-@login_requireddd
+@login_required
 def adminedit(request):
     if 'submit' in request.POST:
         certificate1 = request.POST.get('certificate1').upper()
@@ -177,7 +177,7 @@ def adminedit(request):
         return HttpResponseRedirect('/admin/kashif')
     return render(request,'admineditstudent.html')
 
-@login_requireddd
+@login_requiredd
 def subadminedit(request):
     if 'submit' in request.POST:
         certificate1 = request.POST.get('certificate1').upper()
@@ -300,7 +300,7 @@ def subadmin(request):
         lulu = list(collections.find({}))
         xodus['context'] = lulu
         return render(request,"subadmin.html",xodus)
-    except NameError:
+    except ValueError:
         return HttpResponse("Permissions of subadmin are not defined by the admin")
 
 @login_required
