@@ -16,6 +16,10 @@ body {
   background:white;
 }
 
+.butt{
+    text-align: center;
+}
+
 form {
     margin: auto;
 	padding:3px;
@@ -94,7 +98,7 @@ input[type="submit"]:active {
     </style>
 </head>
 <body>
-    <form method="post" action="{% url 'adminedit' %}">
+    <form method="post" action="{% url 'subadminedit' %}">
 		{% csrf_token %}
         <h3 id="logo">Edit</h3>
 		<input type="text" style="width: 95%;" name="certificate1" placeholder="Enter Certificate Number You Want To Change " autocomplete="off" required/>   
@@ -110,5 +114,10 @@ input[type="submit"]:active {
         <input type="text" name="grade" placeholder="Grade" autocomplete="off" />
         <input type="submit" name="submit" value="Submit" />
     </form>
+    
+    <div class="butt">
+		<button><a href="{% url 'subadmin' %}" style="text-decoration: none;">BACK</a></button>
+	</div>
+
 </body>
 </html>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'adddelbuttons.css' %}"/>
     <link rel="stylesheet" href="{% static 'adminpagetoplogo.css' %}"/>
     <script type="text/javascript" src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <title>Admin</title>
+    <title>Sub Admin</title>
 </head>
 <body>
 
@@ -44,34 +44,34 @@
       <div class="filebuttonsdiv">
         <div>
           <div>
-            {% if add %}
+            {% if add1 %}
             <button class="glow-on-hover" type="button" title="Add" onclick="openForm()">
             <img src="{% static 'images/buttons/add-user.png' %}" alt="add" class="buttons">
             </button>
             {% endif %}
-            {% if edit %}
-            <button class="glow-on-hover" title="Edit" type="button"><a href="{% url 'adminedit' %}">
+            {% if edit1 %}
+            <button class="glow-on-hover" title="Edit" type="button"><a href="{% url 'subadminedit' %}">
             <img src="{% static 'images/buttons/edit.png' %}" alt="edit" class="buttons"></a>
             </button>
             {% endif %}
-            {% if search %}
+            {% if search1 %}
             <button class="glow-on-hover" title="Search" type="button" onclick="openForm4()">
             <img src="{% static 'images/buttons/search.png' %}" alt="search" class="buttons">
             </button>
             {% endif %} 
           </div>
           <div>
-            {% if delete %}
+            {% if delete1 %}
             <button class="glow-on-hover" title="Delete" type="button" onclick="openForm2()">
             <img src="{% static 'images/buttons/delete.png' %}" alt="delete" class="buttons">
             </button>
             {% endif %}
-            {% if download %}
+            {% if download1 %}
             <button class="glow-on-hover" title="Download" type="button" onclick="exprt('xlsx','studentsdata')">
             <img src="{% static 'images/buttons/download.png' %}" alt="download" class="buttons">
             </button>
             {% endif %}
-            {% if deldatabase %}
+            {% if deldatabase1 %}
             <button class="glow-on-hover" title="Delete Database" type="button" onclick="openForm3()">
             <img src="{% static 'images/buttons/delete-database.png' %}" alt="del-database" class="buttons">
             </button>
@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      {% if xlsxfile %}
+      {% if xlsxfile1 %}
       <div class="filebuttonsdiv">
         <form action="{% url 'subadmin' %}" 
         accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -141,18 +141,48 @@
         <input type="text" placeholder="Enter Certificate Number" name="certificate" autocomplete="off"required>
         <input type="text" placeholder="Enter NAME" name="name" autocomplete="off" required>
         <input type="text" placeholder="Enter Father NAME" name="fathername" autocomplete="off" required>
-        <input type="text" placeholder="Enter Course Name" name="course" autocomplete="off" required>
+        <input type="text" list="cc" placeholder="Enter Course Name" name="course" autocomplete="off" required>
         <input type="text" placeholder="Enter Months" name="months" autocomplete="off" required>
-        <input type="text" placeholder="Enter Type" name="type" autocomplete="off" required>
+        <input type="text" list="dd" placeholder="Enter Type" name="type" autocomplete="off" required>
         <input type="text" placeholder="Enter Grade" name="grade" autocomplete="off" required>
+        <input type="text" placeholder="Conducted From (MM-YYYY)" name="from">
+        <input type="text" placeholder="Conducted to (MM-YYYY)" name="too">
         <label for="issue"><h5 style="margin-left: 20px;">Issued Date:</h5></label>
         <input type="date" placeholder="Conducted From" name="issued">
-        <label for="from"><h5 style="margin-left: 20px;">Conducted From:</h5></label>
-        <input type="date" placeholder="Conducted From" name="from">
-        <label for="too"><h5 style="margin-left: 20px;">Conducted to:</h5></label>
-        <input type="date" placeholder="Conducted to" name="too">
         <button type="submit" class="btn" name="adding">Submit</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+               <!-- datalists -->
+        
+               <datalist id="dd">
+                <option value="Diploma">
+                <option value="Certificate">
+              </datalist>
+      
+              <datalist id="cc">
+                <option value="CCC">
+                <option value="TALLY">
+                <option value="BASIC OF COMPUTER">
+                <option value="ADVANCED MS. OFFICE">
+                <option value="HINDI TYPING">
+                <option value="ENGLISH TYPING">
+                <option value="DIPLOMA IN FINANCIAL ACCOUNTING">
+                <option value="DIPLOMA IN COMPUTER APPLICATIONS">
+                <option value="ADVANCED DIPLOMA IN FINANCIAL ACCOUNTING">
+                <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION">
+                <option value="POSTGRADUATE DIPLOMA IN COMPUTER APPLICATION">
+                <option value="DCHSN NETWORKING">
+                <option value="C LANGUAGE">
+                <option value="C++">
+                <option value="DOT NET">
+                <option value="PYTHON">
+                <option value="PHP">
+                <option value="HTML">
+                <option value="CSS">
+                <option value="JAVASCRIPT">
+              </datalist>
+      
+
       </form>
     </div>
 

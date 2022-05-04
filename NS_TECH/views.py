@@ -138,7 +138,7 @@ def adminpage(request):
 
     x = list(collections.find({}))
     args = {"context":x }
-    return render(request, 'adminpage.html', args)
+    return render(request,'adminpage.html',args)
 
 @login_requireddd
 def adminedit(request):
@@ -174,8 +174,46 @@ def adminedit(request):
             collections.update_one({"CertificateNumber":certificate1},{"$set":{"From":fromm}})
         if too:
             collections.update_one({"CertificateNumber":certificate1},{"$set":{"To":too}})
-        return HttpResponseRedirect("/admin")
-    return render(request,'editstudent.html')
+        return HttpResponseRedirect('/admin/kashif')
+    return render(request,'admineditstudent.html')
+
+@login_requireddd
+def subadminedit(request):
+    if 'submit' in request.POST:
+        certificate1 = request.POST.get('certificate1').upper()
+        certificate = request.POST.get('certificate').upper()
+        name = request.POST.get('name').capitalize()
+        fathername = request.POST.get('fathername').capitalize()
+        type = request.POST.get('type').capitalize()
+        course = request.POST.get('course').upper()
+        months = request.POST.get('months')
+        issued = request.POST.get('issued')
+        grade = request.POST.get('grade').upper()
+        fromm = request.POST.get('from')
+        too = request.POST.get('too')
+        if certificate:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"CertificateNumber":certificate}})
+        if name:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"Name":name}})
+        if fathername:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"FatherName":fathername}})
+        if type:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"Type":type}})
+        if course:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"Course":course}})
+        if months:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"Months":months}})
+        if issued:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"IssuedDate":issued}})
+        if grade:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"Grade":grade}})
+        if fromm:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"From":fromm}})
+        if too:
+            collections.update_one({"CertificateNumber":certificate1},{"$set":{"To":too}})
+        return HttpResponseRedirect('/subadmin')
+    return render(request,'subadmineditstudent.html')
+
 
 def ourservices(request):
     return render(request,'services.html')
@@ -190,16 +228,16 @@ def languagecourses(request):
     return render(request,'languagecourses.html')
 
 def subadminpermissions(request):
-    add = request.POST.get('add')
-    edit = request.POST.get('edit')
-    search = request.POST.get('search')
-    delete = request.POST.get('delete')
-    download = request.POST.get('download')
-    deldatabase = request.POST.get('deldatabase')
-    xlsxfile = request.POST.get('xlsxfile')
+    add1 = request.GET.get('add1')
+    edit1 = request.GET.get('edit1')
+    search1 = request.GET.get('search1')
+    delete1 = request.GET.get('delete1')
+    download1 = request.GET.get('download1')
+    deldatabase1 = request.GET.get('deldatabase1')
+    xlsxfile1 = request.GET.get('xlsxfile1')
     global xodus
-    xodus = {"add":add,"edit":edit,"search":search,"delete":delete,"download":download,
-    "deldatabase":deldatabase,"xlsxfile":xlsxfile}
+    xodus = {"add1":add1,"edit1":edit1,"search1":search1,"delete1":delete1,"download1":download1,
+    "deldatabase1":deldatabase1,"xlsxfile1":xlsxfile1}
     return HttpResponseRedirect('admin/kashif')
 
 @login_requiredd
@@ -259,8 +297,8 @@ def subadmin(request):
                 return HttpResponse("<h1>Please Upload File which have Dates in Date Format in xlxs File</h1>")
 
         global xodus
-        x = list(collections.find({}))
-        xodus['context'] = x
+        lulu = list(collections.find({}))
+        xodus['context'] = lulu
         return render(request,"subadmin.html",xodus)
     except NameError:
         return HttpResponse("Permissions of subadmin are not defined by the admin")

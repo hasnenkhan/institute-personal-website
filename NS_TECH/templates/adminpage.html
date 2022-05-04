@@ -134,9 +134,9 @@
         <input type="text" placeholder="Enter Certificate Number" name="certificate"  autocapitalize="on" autocomplete="off"required>
         <input type="text" placeholder="Enter NAME" name="name" autocomplete="off" required>
         <input type="text" placeholder="Enter Father NAME" name="fathername" autocomplete="off" required>
-        <input type="text" placeholder="Enter Course Name" name="course" autocomplete="off" required>
+        <input type="text" list="cc" placeholder="Enter Course Name" name="course" autocomplete="off" required>
         <input type="text" placeholder="Enter Months" name="months" autocomplete="off" required>
-        <input type="text" placeholder="Enter Type" name="type" autocomplete="off" required>
+        <input type="text" list="dd" placeholder="Enter Type" name="type" autocomplete="off" required>
         <input type="text" placeholder="Enter Grade" name="grade" autocomplete="off" required>
         <input type="text" placeholder="Conducted From (MM-YYYY)" name="from">
         <input type="text" placeholder="Conducted to (MM-YYYY)" name="too">
@@ -144,6 +144,36 @@
         <input type="date" name="issued">
         <button type="submit" class="btn" name="adding">Submit</button>
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+ 
+        <!-- datalists -->      
+        <datalist id="dd">
+          <option value="Diploma">
+          <option value="Certificate">
+        </datalist>
+
+        <datalist id="cc">
+          <option value="CCC">
+          <option value="TALLY">
+          <option value="BASIC OF COMPUTER">
+          <option value="ADVANCED MS. OFFICE">
+          <option value="HINDI TYPING">
+          <option value="ENGLISH TYPING">
+          <option value="DIPLOMA IN FINANCIAL ACCOUNTING">
+          <option value="DIPLOMA IN COMPUTER APPLICATIONS">
+          <option value="ADVANCED DIPLOMA IN FINANCIAL ACCOUNTING">
+          <option value="ADVANCED DIPLOMA IN COMPUTER APPLICATION">
+          <option value="POSTGRADUATE DIPLOMA IN COMPUTER APPLICATION">
+          <option value="DCHSN NETWORKING">
+          <option value="C LANGUAGE">
+          <option value="C++">
+          <option value="DOT NET">
+          <option value="PYTHON">
+          <option value="PHP">
+          <option value="HTML">
+          <option value="CSS">
+          <option value="JAVASCRIPT">
+        </datalist>
+
       </form>
     </div>
 
@@ -185,22 +215,21 @@
      <!--subadmin permission-->
 
      <div class="form-popup" id="myForm5">
-      <form action="{% url 'subadminpermissions' %}" class="form-container" method="POST">
-        {% csrf_token %}
+      <form action="{% url 'subadminpermissions' %}" class="form-container">
         <h2 style="text-align: center;">Permissions Of Subadmin</h2>
-        <input type="checkbox" name="add" id="add" value="1">
+        <input type="checkbox" name="add1" id="add" value="1" style="float: left;">
         <label for="add">Add Student</label><br>
-        <input type="checkbox" name="edit" id="edit" value="1">
+        <input type="checkbox" name="edit1" id="edit" value="1" style="float: left;">
         <label for="edit">Edit Student</label><br>
-        <input type="checkbox" name="search" id="search" value="1">
+        <input type="checkbox" name="search1" id="search" value="1" style="float: left;">
         <label for="search">Search Student</label><br>
-        <input type="checkbox" name="delete" id="del" value="1">
+        <input type="checkbox" name="delete1" id="del" value="1" style="float: left;">
         <label for="del">Delete Student</label><br>
-        <input type="checkbox" name="download" id="download" value="1">
+        <input type="checkbox" name="download1" id="download" value="1" style="float: left;">
         <label for="download">Download Data of Student</label><br>
-        <input type="checkbox" name="deldatabase" id="deldatabase" value="1">
+        <input type="checkbox" name="deldatabase1" id="deldatabase" value="1" style="float: left;">
         <label for="deldatabase">Delete Database</label><br>
-        <input type="checkbox" name="xlsxfile" id="xlsxfile" value="1">
+        <input type="checkbox" name="xlsxfile1" id="xlsxfile" value="1" style="float: left;">
         <label for="xlsxfile">Add Xlsx file</label><br>
         <button type="submit" class="btn" name="editt" onclick="alertt()">Submit</button>
         <button type="button" class="btn cancel" onclick="closeForm5()">Close</button>

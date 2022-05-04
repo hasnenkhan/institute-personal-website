@@ -17,7 +17,7 @@ Including another URLconf
 from django.urls import path
 from django.views.static import serve
 from django.conf import settings
-from .views import homepage, certificatefind,subadmin, contact_us,subadminpermissions, adminlogin, adminpage, admission, adminedit,ourservices, certificatecourses, diplomacourses, languagecourses, changepassword
+from .views import homepage, certificatefind,subadmin, contact_us,subadminpermissions, adminlogin, adminpage, admission, adminedit,subadminedit,ourservices, certificatecourses, diplomacourses, languagecourses, changepassword
 
 urlpatterns = [
     path('', homepage, name='home'),
@@ -34,6 +34,7 @@ urlpatterns = [
     path('language-courses', languagecourses, name='languagecourses'),
     path('permissions', subadminpermissions, name='subadminpermissions'),
     path('subadmin', subadmin, name='subadmin'),
+    path('subadmin/edit', subadminedit, name='subadminedit'),
     path('changepassword', changepassword, name='changepassword'),
     path(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
     path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
