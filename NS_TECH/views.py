@@ -258,24 +258,24 @@ def subadmin(request):
             "Course": course, "Grade": grade, "From": fromm, "To": too,
             "FatherName": fathername, "CertificateType":type, "Months": months, "IssuedDate": issued})
 
-        if 'deleting' in request.POST:
+        elif 'deleting' in request.POST:
             certificate = request.POST.get('certificate2')
             collections.delete_many({'CertificateNumber': certificate })
 
-        if 'deleteall' in request.POST:
+        elif 'deleteall' in request.POST:
             collections.delete_many({})
     
-        if 'searches' in request.POST:
+        elif 'searches' in request.POST:
             srchno = str(request.POST.get('search')).upper()
             result = list(collections.find({"CertificateNumber": {"$regex":srchno}}))
             arr = {"context": result}
             return render(request, "searches.html",arr)
 
-        if 'Log Out' in request.POST:
+        elif 'Log Out' in request.POST:
             del request.session["subadmin"]
             return HttpResponseRedirect("/")
         
-        if 'thefile' in request.POST:
+        elif 'thefile' in request.POST:
             try:
                 file = request.FILES['thefile']
                 df = pd.read_excel(file)
@@ -296,10 +296,11 @@ def subadmin(request):
             except AttributeError:
                 return HttpResponse("<h1>Please Upload File which have Dates in Date Format in xlxs File</h1>")
 
-        global xodus
-        lulu = list(collections.find({}))
-        xodus['context'] = lulu
-        return render(request,"subadmin.html",xodus)
+        else:
+            global xodus
+            lulu = list(collections.find({}))
+            xodus['context'] = lulu
+            return render(request,"subadmin.html",xodus)
     except NameError:
         return HttpResponse("Permissions of subadmin are not defined by the admin")
 
