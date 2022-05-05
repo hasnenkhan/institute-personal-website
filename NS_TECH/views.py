@@ -300,7 +300,7 @@ def subadmin(request):
         lulu = list(collections.find({}))
         xodus['context'] = lulu
         return render(request,"subadmin.html",xodus)
-    except ValueError:
+    except NameError:
         return HttpResponse("Permissions of subadmin are not defined by the admin")
 
 @login_required
