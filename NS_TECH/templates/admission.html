@@ -72,8 +72,7 @@ body, div, form, input, select, p {
   position: absolute;
   z-index: 1;
   width: 130px;
-  height: 130px;
-  border: 1px solid black;
+  height: 150px;
   background-position: center;
   background-size: cover;
 }
@@ -285,6 +284,10 @@ h1 {
         font-weight: 800;
         text-align: center;
       }
+      .reload{
+        float: right;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -292,14 +295,15 @@ h1 {
       <form action="https://formsubmit.co/nstechorai@gmail.com" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_template" value="table">
         <div id= "top">
+          <div class="reload" title="Reupload Image" onclick="none();">
+            &#x21bb;
+          </div>
           <div class="topri">
           <div class="photo">
-            <h6>
               <div id="display-image"></div>
               <input type="file" class="custom-file-input" onchange="display()" name="attachment" id="image-input"
               accept="image/png,image/jpeg,image/jpg">
-            </h6>
-            </div>
+          </div>
           </div>     
           <div class= "name-of-institute">
             <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
@@ -332,9 +336,9 @@ h1 {
             <div class="question">
                   Gender&nbsp;&nbsp;&nbsp;:
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="checkbox" value="Yes" id="male" onclick="ifmale();" class="gender" name="Male"/>
+                  <input type="checkbox" value="Yes" id="male" onclick="ifmale();maleclick()" class="gender" name="Male"/>
                   <label for="male" class="check"><span>Male</span></label>
-                  <input type="checkbox" value="Yes" id="Female" onclick="iffemale();" class="gender" name="Female"/>
+                  <input type="checkbox" value="Yes" id="Female" onclick="iffemale();femaleclick()" class="gender" name="Female"/>
                   <label for="Female" class="check"><span>Female</span></label>
                 </div>
           </div>
@@ -375,11 +379,11 @@ h1 {
         <div class="item">
           <div class="name-item">
           <input type="text" name="Postal/Zip code" placeholder="Postal / Zip code" required/>
-          <input type="text" name="Adhaar Number" placeholder="Adhaar Number" required>
+          <input type="number" name="Adhaar Number" placeholder="Adhaar Number" required>
           </div>
         </div>
         <div class="triple-item">
-          <select class="Class 10th Passing Year" required>
+          <select class="Class 10th Passing Year">
             <option value="">Class 10th Passing Year</option>
             <option value="1980">1980</option>
             <option value="1981">1981</option>
@@ -425,8 +429,8 @@ h1 {
             <option value="2021">2021</option>
             <option value="2022">2022</option>
           </select>
-          <input type="text" name="Highest Qualification" placeholder="Highest Qualificaton" required/>
-          <select name="Year of Highest Qualification" required>
+          <input type="text" name="Highest Qualification" placeholder="Highest Qualificaton"/>
+          <select name="Year of Highest Qualification">
             <option value="">Year</option>
             <option value="1980">1980</option>
             <option value="1981">1981</option>
@@ -482,7 +486,36 @@ h1 {
           </select>
         </div>
         <div class="city-item">
-          <input type="text" name="Name of Course" placeholder="Name of Course" required/>
+          <input type="text" list="cc" name="Name of Course" placeholder="Name of Course" required/>
+          <datalist id="cc">
+            <option value="Advanced Certificate MS. Office">
+            <option value="Certificate in MS Word & Excel">
+            <option value="Certificate in MS Excel">
+            <option value="English Typing">
+            <option value="Hindi Typing">
+            <option value="Accounting With Tally">
+            <option value="Spoken English">
+            <option value="Diploma in Financial Accounting">
+            <option value="Diploma in Computer Application">
+            <option value="Advanced Diploma in Financial Accounting">
+            <option value="Advanced Diploma in Computer Application">
+            <option value="Desktop Publishing">
+            <option value="Java Language">
+            <option value="PHP">
+            <option value="Python Language">
+            <option value="HTML">
+            <option value="CSS">
+            <option value="C Language">
+            <option value="C++ Language">
+            <option value="Android Studio">
+            <option value="Database Management System">
+            <option value=". NET Technology">
+            <option value="Web Technology">
+            <option value="DCHSN">
+            <option value="Hindi and English Typing">
+            <option value="Cutting  and Tailoring">
+            <option value="Shorthand and Hindi Typing">            
+          </datalist>
           <input type="text" name="Batch Timing" placeholder="Batch Timing"/>
         </div>
         <div class="thumb-item">
@@ -516,54 +549,80 @@ h1 {
         </div>
       </form>
       </div>
-    <script>
-      function married() {
-        var x = document.getElementById('maritalstatus').value;
-        if (x == "Unmarried"){
-          document.getElementById("husbandname").disabled = true;
-          document.getElementById("occupation").disabled = true;
-        }
-        else {
-          document.getElementById("husbandname").disabled = false;
-          document.getElementById("occupation").disabled = false;
-        }
-      }
-
-      // if male     
-      function ifmale() {
-        var x = document.getElementById('male').value;
-        if (x == "Yes"){
-          document.getElementById("husbandname").disabled = true;
-          document.getElementById("occupation").disabled = true;
-          document.getElementById("Female").checked = false;
+      <script>
+        function married() {
+          var x = document.getElementById('maritalstatus').value;
+          var z = document.getElementById('male');
+          var y = document.getElementById('Female');
+          if (x == "Unmarried"){
+            document.getElementById("husbandname").disabled = true;
+            document.getElementById("occupation").disabled = true;
+          }  
+          else {
+            if (x == "Married" && y.checked == true){
+              document.getElementById("husbandname").disabled = false;
+              document.getElementById("occupation").disabled = false;
+            }
+            else if (x == "Married" && z.checked == true){
+              document.getElementById("husbandname").disabled = true;
+              document.getElementById("occupation").disabled = true;
+            }
+            else {
+              document.getElementById("husbandname").disabled = false;
+              document.getElementById("occupation").disabled = false;
+            }
           }
         }
 
-      // if female
-      function iffemale(){
-        var y = document.getElementById('Female').value;
-        if (y == "Yes"){
-          document.getElementById("husbandname").disabled = false;
-          document.getElementById("occupation").disabled = false;
+        // if male     
+        function ifmale() {
+          var z = document.getElementById('male').value;
+          var m = document.getElementById('maritalstatus').value;
+          if (z == "Yes" && m == "Married"){
+            document.getElementById("husbandname").disabled = true;
+            document.getElementById("occupation").disabled = true;
+            }
+        }
+  
+        // if female
+        function iffemale(){
+          var y = document.getElementById('Female').value;
+          var m = document.getElementById('maritalstatus').value;
+          if (y == "Yes" && m == "Married"){
+            document.getElementById("husbandname").disabled = false;
+            document.getElementById("occupation").disabled = false;
+          }
+        }
+   
+        // if clicked on male checkbox
+        function maleclick(){
+          document.getElementById("Female").checked = false;
+        }
+
+        // if  clicked on female checkbox
+        function femaleclick(){
           document.getElementById("male").checked = false;
         }
-      }
 
-      // img show
-      const image_input = document.querySelector("#image-input");
-      image_input.addEventListener("change", function() {
-      const reader = new FileReader();
-      reader.addEventListener("load", () => {
-      const uploaded_image = reader.result;
-      document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
-      });
-      reader.readAsDataURL(this.files[0]);
-      });
-
-      // display photo
-      function display(){
-        document.getElementById("display-image").style.display = "block";
-      }
-    </script>
+        // img show
+        const image_input = document.querySelector("#image-input");
+        image_input.addEventListener("change", function() {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+        const uploaded_image = reader.result;
+        document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+        });
+        reader.readAsDataURL(this.files[0]);
+        });
+  
+        // display photo
+        function display(){
+          document.getElementById("display-image").style.display = "block";
+        }
+        // remove displayed photo
+        function none(){
+          document.getElementById("display-image").style.display = "none";
+        }
+      </script>
   </body>
 </html>
