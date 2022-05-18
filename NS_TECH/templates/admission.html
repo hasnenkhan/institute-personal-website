@@ -57,12 +57,12 @@ body, div, form, input, select, p {
   text-align: right;
 }
 .thumb h6 {
-  margin-top: 88%;
+  margin-top: 95%;
   text-align: center;
 }
 .thumb{
   margin-right: 10px;
-  width: 130px;
+  width: 120px;
   height:130px;
   border: 2px solid black;
   float: right;
@@ -72,7 +72,7 @@ body, div, form, input, select, p {
   position: absolute;
   z-index: 1;
   width: 130px;
-  height: 150px;
+  height: 130px;
   background-position: center;
   background-size: cover;
 }
@@ -80,7 +80,7 @@ body, div, form, input, select, p {
 .photo{
     width: 130px;
     height:130px;
-    border: 2px solid black;
+   border: 2px solid black; 
 }
 .topri{
     float: right;
@@ -101,12 +101,50 @@ body, div, form, input, select, p {
     float: right;
   }
 }
+
+      .topinfoname{
+        margin-right:48%;
+        margin-left: 2%;
+      }
+      .topinfomother{
+        margin-right:44%;
+        margin-left: 2%;
+      }
+      .topinfohusband{
+        margin-right:43%;
+        margin-left: 2%;
+      }
+      .topinfodate{
+        margin-right:45%;
+        margin-left: 2%;
+      }
+      .topinfocategory{
+        margin-right:46.5%;
+        margin-left: 2%;
+      }
+      .topinfozip{
+        margin-right:42.5%;
+        margin-left: 2%;
+      }
+      .topinfocourse{
+        margin-left: 2%;
+        margin-right:43.5%;
+      }
+      .topinfopassing1{
+        margin-left:1%;
+        margin-right:21%;
+      }
+      .topinfopassing2{
+        margin-right:1%;
+      }
+
 h1 {
   margin: 0;
   z-index: 2;
   }
   .srno{
     color:red;
+    font-size: 20px;
   }
   h2 {
       font-weight: 200;
@@ -148,7 +186,7 @@ h1 {
         width:26%;
       }
       .triple-item select{
-        width:26%;
+        width:35.5%;
         padding: 7px 0;
         background: transparent;
       }
@@ -308,25 +346,30 @@ h1 {
           <div class= "name-of-institute">
             <h1>NS TECH INSTITUTE OF TECHNOLOGY</h1>
             <span class="reg-no">Reg No JAL/06757 UP-37-0000622 </span>
-          <h2>(Admission Form)</h2>
+          <p>(Admission Form)</p>
           </div>
         </div>
-        <h2 class="srno">Sr. No. ______ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p class="srno">Sr. No. ______ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;
-        </h2>
-        <div class="item">
+        </p>
+        <div class="item" style="font-size: 13px;">
+          <span class="topinfoname">Name</span>
+          <span>Father Name</span>
           <div class="name-item">
             <input type="text" name="Name" placeholder="Full Name" required/>
             <input type="text" name="Father Name" placeholder="Father Name" required/>
           </div>
         </div>
-        <div class="item">
+        <div class="item" style="font-size: 13px;">
+          <span class="topinfomother">Mother Name</span>
+          <span>Father's Occupation</span>
           <div class="name-item">
           <input type="text" name="Mother Name" placeholder="Mother Name" required/>
           <input type="text" name="Father's Occupation" placeholder="Father's Occupation" required/>
         </div>
       </div>
-        <div class="item">
+        <div class="item" style="font-size: 13px;">
+         <!-- <span style="margin-left:2%;">Marital Status</span>--> 
           <div class="city-item">
             <select id = "maritalstatus" name="Married Status" onclick="married();" required>
               <option value="">Marital Status</option>
@@ -343,14 +386,17 @@ h1 {
                 </div>
           </div>
       </div>
-        <div class="item">
+        <div class="item" style="font-size: 13px;">
+          <span class="topinfohusband">Husband Name</span>
+          <span>Husband Occupation</span>
           <div class="name-item">
             <input type="text" id="husbandname" name="Husband Name" placeholder="Husband Name"/>
             <input type="text" id="occupation" name="Husband Occupation" placeholder="Husband Occupation"/>
           </div>
         </div>
-          <div class="item">
-            <p>Date of Birth</p>
+          <div class="item" style="font-size: 13px;">
+          <span class="topinfodate">Date of Birth</span>
+          <span>Religion</span>
             <div class="city-item">
             <input type="date" name="Date of Birth" required/>
             <i class="fas fa-calendar-alt"></i>
@@ -364,7 +410,9 @@ h1 {
             </select>
             </div>
           </div>
-          <div class="item">
+          <div class="item" style="font-size: 13px;">
+            <span class="topinfocategory">Category</span>
+          <span>Address</span>
             <div class="city-item">
               <select name="Category" required>
                 <option value="">Category</option>
@@ -376,12 +424,18 @@ h1 {
               <input type="text" name="Street address" placeholder="Street address" />
             </div>
           </div>
-        <div class="item">
+        <div class="item" style="font-size: 13px;">
+          <span class="topinfozip">Postal/Zip code</span>
+          <span>Adhaar Number</span>
           <div class="name-item">
           <input type="text" name="Postal/Zip code" placeholder="Postal / Zip code" required/>
           <input type="number" name="Adhaar Number" placeholder="Adhaar Number" required>
           </div>
         </div>
+        <div class="item" style="font-size: 13px;">
+          <span class="topinfopassing1">Class 10th Passing Year</span>
+          <span class="topinfopassing2">Highest Qualification</span>
+          <span>& &nbsp;&nbsp;Year of Highest Qualification</span>
         <div class="triple-item">
           <select class="Class 10th Passing Year">
             <option value="">Class 10th Passing Year</option>
@@ -485,6 +539,10 @@ h1 {
             <option value="2030">2030</option>
           </select>
         </div>
+        </div>
+        <div class="item" style="font-size: 13px;">
+          <span class="topinfocourse">Course Name</span>
+          <span>Batch Timing</span>
         <div class="city-item">
           <input type="text" list="cc" name="Name of Course" placeholder="Name of Course" required/>
           <datalist id="cc">
@@ -518,6 +576,7 @@ h1 {
           </datalist>
           <input type="text" name="Batch Timing" placeholder="Batch Timing"/>
         </div>
+        </div>
         <div class="thumb-item">
           <div class="thumb">
             <h6>Left Thumb Impression</h6>
@@ -544,8 +603,8 @@ h1 {
        </div>
         
         <div class="btn-block">
-          <button type="submit" name="submit">Submit</button>
           <button type="submit" onclick="window.print()">Print</button>
+          <button type="submit" name="submit">Submit</button>
         </div>
       </form>
       </div>
