@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-ao9-(d3*e045-6@1b#l+k59$ty#v4p1@1g44cdpbw7=cu+#$&o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['ns-tech.herokuapp.com','www.ns-tech.herokuapp.com','nstech.co.in','127.0.0.1']
+ALLOWED_HOSTS = ['ns-tech.herokuapp.com','www.ns-tech.herokuapp.com','nstech.co.in','127.0.0.1','eb-nstech-hasnen-khan.ap-south-1.elasticbeanstalk.com']
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
